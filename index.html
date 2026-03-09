@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EBHC - Edmonton Ball Hockey Championship 2026</title>
+  <meta name="description" content="Edmonton's premier adult ball hockey tournament. August 2026. Three divisions, full round-robin play, structured playoffs. Crown yourself City Champion.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-deep: #0f1a2e;
+      --navy-light: #243556;
+      --orange: #f28322;
+      --orange-hover: #e07010;
+      --orange-glow: rgba(242, 131, 34, 0.3);
+      --gold: #f28322;
+      --gold-light: #f28322;
+      --gold-muted: rgba(242, 131, 34, 0.25);
+      --silver: #c0c4cc;
+      --silver-light: #e8eaef;
+      --white: #ffffff;
+      --off-white: #f5f6f8;
+      --text: #1a2744;
+      --text-muted: #5a6478;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    .heading-font {
+      font-family: 'Oswald', 'Barlow', sans-serif;
+      text-transform: uppercase;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(15, 26, 46, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(242, 131, 34, 0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 0.55rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: all 0.2s !important;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-hover) !important;
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 5rem;
+      background: var(--navy-deep);
+      background-image:
+        linear-gradient(rgba(15, 26, 46, 0.82), rgba(15, 26, 46, 0.88)),
+        url('ball hockey placeholder.jpg');
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid overlay for texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-logo {
+      width: 220px;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.75rem;
+      filter: drop-shadow(0 8px 30px rgba(242, 131, 34, 0.2));
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(242, 131, 34, 0.1);
+      border: 1px solid rgba(242, 131, 34, 0.3);
+      color: var(--gold-light);
+      padding: 0.4rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 .highlight {
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.6);
+      max-width: none;
+      margin: 0 auto 1rem;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .hero-sub {
+        white-space: normal;
+        max-width: 90%;
+        font-size: 1rem;
+      }
+    }
+
+    .hero-tagline {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--silver);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    /* COUNTDOWN */
+    .countdown-wrapper {
+      margin-bottom: 2.5rem;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .countdown {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .countdown-block {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 0.75rem 1.25rem;
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .countdown-unit {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.25rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.95rem 2.25rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--orange-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-2px);
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 920px;
+      margin: -3.5rem auto 0;
+      position: relative;
+      z-index: 2;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .stat-item {
+      padding: 2rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--silver-light);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-number.accent { color: var(--gold); }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 0.4rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* THE EXPERIENCE SECTION */
+    .experience-section {
+      background: var(--off-white);
+      text-align: center;
+    }
+
+    .experience-section .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .experience-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    }
+
+    .experience-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .experience-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .experience-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* DETAILS GRID */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .detail-card {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.25s;
+      border: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .detail-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* REGISTRATION / PRICING */
+    .reg-section {
+      background: var(--navy-deep);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reg-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .reg-section .container { position: relative; }
+    .reg-section .section-label { color: var(--gold-light); }
+    .reg-section .section-title { color: var(--white); }
+    .reg-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+    .reg-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .reg-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 3rem;
+    }
+
+    .price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-amount {
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .price-per {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .reg-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .reg-features li {
+      padding: 0.6rem 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: rgba(242, 131, 34, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .reg-info {
+      padding-top: 1rem;
+    }
+
+    .reg-info h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .payment-chip {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .reg-fine-print {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+    }
+
+    .reg-fine-print a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    /* SOC SECTION */
+    .soc-section {
+      background: var(--navy-deep);
+      color: var(--white);
+    }
+
+    .soc-section .section-title { color: var(--white); }
+    .soc-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+    .soc-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .soc-stat {
+      text-align: center;
+    }
+
+    .soc-stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .soc-stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.4rem;
+    }
+
+    .soc-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .soc-detail-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .soc-detail-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .soc-detail-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .soc-stats { gap: 1.5rem; }
+      .soc-stat-number { font-size: 2rem; }
+      .soc-details { grid-template-columns: 1fr; }
+    }
+
+    /* DATES TIMELINE */
+    .dates-section { background: var(--off-white); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.75rem 1.5rem;
+      background: var(--white);
+      border-radius: 8px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+    }
+
+    .timeline-step {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-date {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 0.25rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    /* FAQ */
+    .faq-section { background: var(--white); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      background: var(--off-white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover { color: var(--gold); }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* CONTACT / CTA */
+    .cta-section {
+      background: var(--navy-deep);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(242, 131, 34, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-section .container { position: relative; }
+
+    .cta-section .section-label { color: var(--gold-light); }
+
+    .cta-section .section-title {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-desc {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-email {
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--gold-light); }
+
+    /* STICKY MOBILE CTA */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      padding: 0.75rem 1rem;
+      background: rgba(15, 26, 46, 0.97);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(242, 131, 34, 0.25);
+    }
+
+    .mobile-cta .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.85rem;
+    }
+
+    /* MOBILE NAV */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: 0.3s;
+      border-radius: 1px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .reg-layout {
+        grid-template-columns: 1fr;
+      }
+      .timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--navy-deep);
+        flex-direction: column;
+        padding: 1rem 2rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(242, 131, 34, 0.15);
+      }
+
+      .nav-links.active { display: flex; }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        margin: -2rem 1rem 0;
+      }
+
+      .stat-item:nth-child(2) { border-right: none; }
+
+      .hero h1 { font-size: 2.5rem; }
+
+      .countdown { gap: 0.5rem; }
+      .countdown-block { min-width: 65px; padding: 0.6rem 0.75rem; }
+      .countdown-number { font-size: 1.5rem; }
+
+      .experience-grid { grid-template-columns: 1fr; }
+
+      .details-grid { grid-template-columns: 1fr; }
+
+      .reg-card { padding: 2rem 1.5rem; }
+      .price-amount { font-size: 3rem; }
+
+      .timeline { grid-template-columns: 1fr; }
+
+      .faq-grid { grid-template-columns: 1fr; }
+
+      .mobile-cta { display: block; }
+
+      footer { padding-bottom: 5rem; }
+
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="ebhc-logo.png" alt="EBHC Logo">
+      <span>EBHC</span>
+    </a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#experience">The Tournament</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#dates">Key Dates</a></li>
+      <li><a href="#registration">Registration</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="nav-cta">Secure Your Spot</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="ebhc-logo.png" alt="EBHC Logo" class="hero-logo">
+      <div class="hero-badge">August 2026 &bull; Edmonton, AB</div>
+      <h1>Edmonton Ball Hockey <span class="highlight">Championship</span></h1>
+      <p class="hero-sub">Edmonton's premier ball hockey tournament. Who will be crowned City Champion?</p>
+      <p class="hero-tagline">August 2026 &mdash; The hunt for the crown begins.</p>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-wrapper">
+        <div class="countdown-label">Registration Opens In</div>
+        <div class="countdown" id="countdown">
+          <div class="countdown-block">
+            <div class="countdown-number" id="cd-days">--</div>
+            <div class="countdown-unit">Days</div>
+          </div>
+          <div class="countdown-block">
+            <div class="countdown-number" id="cd-hours">--</div>
+            <div class="countdown-unit">Hours</div>
+          </div>
+          <div class="countdown-block">
+            <div class="countdown-number" id="cd-mins">--</div>
+            <div class="countdown-unit">Mins</div>
+          </div>
+          <div class="countdown-block">
+            <div class="countdown-number" id="cd-secs">--</div>
+            <div class="countdown-unit">Secs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="btn btn-primary">Secure Your Spot</a>
+        <a href="#experience" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Divisions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number accent">20</div>
+      <div class="stat-label">Team Cap</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">4+</div>
+      <div class="stat-label">Game Guarantee</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Day Event</div>
+    </div>
+  </div>
+
+  <!-- THE EXPERIENCE -->
+  <section id="experience" class="experience-section">
+    <div class="container">
+      <span class="section-label">The Championship</span>
+      <h2 class="section-title">Compete for the Title</h2>
+      <p class="section-subtitle">EBHC was created to fill a gap in Edmonton's adult ball hockey scene &mdash; a dedicated city championship where the best teams compete for something that matters.</p>
+      <div class="experience-grid">
+        <div class="experience-card">
+          <div class="experience-icon">
+            <svg width="26" height="26" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>City Champion Titles</h3>
+          <p>Championship titles awarded in every division. This is the only tournament in Edmonton built specifically to crown city champions in adult ball hockey.</p>
+        </div>
+        <div class="experience-card">
+          <div class="experience-icon">
+            <svg width="26" height="26" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Elite Competition</h3>
+          <p>Three divisions of structured, competitive play. Full round-robin seeding into playoffs ensures every team earns their path to the final.</p>
+        </div>
+        <div class="experience-card">
+          <div class="experience-icon">
+            <svg width="26" height="26" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          </div>
+          <h3>Tournament-Grade Operations</h3>
+          <p>Certified officials, dedicated timekeepers, and professional tournament operations for every single game. No corners cut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details">
+    <div class="container">
+      <span class="section-label">Tournament Details</span>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Everything you need to know about format, venue, and what your team gets.</p>
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h3>Venue</h3>
+            <p>To be announced. Stay tuned for venue details.</p>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+          </div>
+          <div>
+            <h3>When</h3>
+            <p>August 2026. Three full days of championship ball hockey.</p>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h3>Three Divisions</h3>
+            <p>Compete in your skill tier. City Champion titles awarded in each division.</p>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <h3>Round-Robin + Playoffs</h3>
+            <p>Full round-robin seeding into structured playoffs. Minimum 4-game guarantee for every team.</p>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8 14h8l2 8H6l2-8z"/></svg>
+          </div>
+          <div>
+            <h3>Championship Awards</h3>
+            <p>Division champion titles and championship hardware for the winners.</p>
+          </div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h3>Certified Officials</h3>
+            <p>Professional certified referees and timekeepers for every game. No exceptions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESENTED BY SOC -->
+  <section class="soc-section">
+    <div class="container" style="text-align: center;">
+      <span class="section-label">Presented By</span>
+      <h2 class="section-title">Shinny of Champions</h2>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">EBHC is brought to you by Shinny of Champions &mdash; an Edmonton-based registered nonprofit that's been building the local hockey community since day one.</p>
+      <div class="soc-stats">
+        <div class="soc-stat">
+          <div class="soc-stat-number">5+</div>
+          <div class="soc-stat-label">Tournaments Hosted</div>
+        </div>
+        <div class="soc-stat">
+          <div class="soc-stat-number">2024</div>
+          <div class="soc-stat-label">Founded</div>
+        </div>
+        <div class="soc-stat">
+          <div class="soc-stat-number">6+</div>
+          <div class="soc-stat-label">Programs Running</div>
+        </div>
+      </div>
+      <div class="soc-details">
+        <div class="soc-detail-card">
+          <h4>Proven Track Record</h4>
+          <p>From the First Annual June Tournament to the Battle of Three Hills and the Rebuilding Jasper wildfire relief event &mdash; SOC has delivered professionally run tournaments with certified officials, full stat tracking, and competitive formats.</p>
+        </div>
+        <div class="soc-detail-card">
+          <h4>Professional Coaching Staff</h4>
+          <p>SOC's programs are led by coaches with real credentials &mdash; including a former AJHL player, NAIT Ooks Men's Hockey head coach, and an SPHL professional. The same standard applies to EBHC operations.</p>
+        </div>
+        <div class="soc-detail-card">
+          <h4>Community First</h4>
+          <p>As a registered Alberta nonprofit, SOC partners with organizations like the Edmonton Food Bank and has raised funds for Jasper wildfire relief. Every event gives back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY DATES -->
+  <section id="dates" class="dates-section">
+    <div class="container">
+      <span class="section-label">Key Dates</span>
+      <h2 class="section-title">Mark Your Calendar</h2>
+      <p class="section-subtitle">Limited to 20 teams. When spots are gone, they're gone.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-step">Step 1</div>
+          <div class="timeline-date">May 5, 2026</div>
+          <div class="timeline-title">Registration Opens</div>
+          <div class="timeline-desc">12:00 PM MDT. First-come, first-served.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">Step 2</div>
+          <div class="timeline-date">July 1, 2026</div>
+          <div class="timeline-title">Full Balance Due</div>
+          <div class="timeline-desc">Remaining $700 balance must be paid in full.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">Step 3</div>
+          <div class="timeline-date">July 11, 2026</div>
+          <div class="timeline-title">Registration Closes</div>
+          <div class="timeline-desc">12:00 PM MDT &mdash; or when the 20-team cap is hit.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-step">Step 4</div>
+          <div class="timeline-date">July 18, 2026</div>
+          <div class="timeline-title">Final Rosters Due</div>
+          <div class="timeline-desc">All team rosters must be submitted.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION -->
+  <section id="registration" class="reg-section">
+    <div class="container">
+      <span class="section-label">Registration</span>
+      <h2 class="section-title">Lock In Your Team</h2>
+      <p class="section-subtitle">20 spots. Three divisions. One city championship.</p>
+      <div class="reg-layout">
+        <div class="reg-card">
+          <div class="price-tag">
+            <span class="price-amount">$1,000</span>
+            <span class="price-per">per team</span>
+          </div>
+          <p class="price-note">$300 deposit secures your spot. Balance due July 1, 2026.</p>
+          <ul class="reg-features">
+            <li>
+              <span class="check-icon"><svg fill="none" stroke="#f28322" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              4-game minimum guarantee
+            </li>
+            <li>
+              <span class="check-icon"><svg fill="none" stroke="#f28322" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              Certified officials &amp; timekeepers every game
+            </li>
+            <li>
+              <span class="check-icon"><svg fill="none" stroke="#f28322" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              Full tournament operations
+            </li>
+            <li>
+              <span class="check-icon"><svg fill="none" stroke="#f28322" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              Championship awards for division winners
+            </li>
+            <li>
+              <span class="check-icon"><svg fill="none" stroke="#f28322" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+              City Champion title on the line
+            </li>
+          </ul>
+          <a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 1rem;">Secure Your Spot</a>
+        </div>
+        <div class="reg-info">
+          <h3>Payment Methods</h3>
+          <div class="payment-methods">
+            <span class="payment-chip">E-Transfer</span>
+            <span class="payment-chip">Credit Card</span>
+            <span class="payment-chip">Cash (by arrangement)</span>
+          </div>
+
+          <h3>How Registration Works</h3>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.7; margin-bottom: 2rem;">
+            Registration opens May 5 at 12:00 PM MDT on a first-come, first-served basis. Pay a $300 deposit to lock in your team. The remaining $700 balance is due by July 1, 2026. Final rosters are due July 18.
+          </p>
+
+          <h3>Good to Know</h3>
+          <p class="reg-fine-print">
+            E-Transfer payments to <a href="mailto:payments@shinnyofchampions.com">payments@shinnyofchampions.com</a>. Credit card payments include a 3.4% + $0.30 processing fee. Cash payments available by arrangement &mdash; contact us to set up.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Common Questions</h2>
+      <p class="section-subtitle">Everything else you might want to know before registering.</p>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How many teams can enter?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">The tournament is capped at 20 teams across three divisions. Once spots are filled, registration closes regardless of the deadline date. First-come, first-served.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How are divisions structured?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Three competitive divisions, each with full round-robin play seeding into structured playoffs. City Champion titles are awarded in every division.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What's included in the $1,000 fee?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Certified officials and timekeepers for every game, full tournament operations, championship awards, and a minimum 4-game guarantee per team.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does the deposit work?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">A $300 deposit is due at registration to secure your team's spot. The remaining $700 balance must be paid by July 1, 2026.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            When are final rosters due?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">All team rosters must be submitted by July 18, 2026. Details on roster submission will be sent to registered team GMs.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Where is the tournament held?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Venue is to be announced. Full details and directions will be provided to registered teams once confirmed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container" style="max-width: 600px;">
+      <span class="section-label">Questions?</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="cta-desc">Have questions about the tournament, registration, or divisions? We're here to help.</p>
+      <a href="mailto:ebhc@shinnyofchampions.com" class="contact-email">ebhc@shinnyofchampions.com</a>
+      <div style="margin-top: 2.5rem;">
+        <a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="btn btn-primary">Secure Your Spot</a>
+      </div>
+      <p style="margin-top: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.3);">
+        <a href="https://tournaments.shinnyofchampions.com/news/edmonton-ball-hockey-championship-ebhc" target="_blank" style="color: rgba(255,255,255,0.4);">Full tournament information on Shinny of Champions</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <a href="https://tournaments.shinnyofchampions.com" target="_blank">Shinny of Champions</a>. All rights reserved.</p>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-cta">
+    <a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="btn btn-primary">Secure Your Spot</a>
+  </div>
+
+  <script>
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+
+    // Countdown timer — targets May 5, 2026 12:00 PM MDT (UTC-6)
+    function updateCountdown() {
+      const target = new Date('2026-05-05T18:00:00Z'); // 12:00 PM MDT = 18:00 UTC
+      const now = new Date();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.querySelector('.countdown-label').textContent = 'Registration Is Open';
+        document.getElementById('cd-days').textContent = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-mins').textContent = '0';
+        document.getElementById('cd-secs').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('cd-mins').textContent = mins.toString().padStart(2, '0');
+      document.getElementById('cd-secs').textContent = secs.toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isActive = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+        faq.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      // Open clicked if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+  </script>
+
+</body>
+</html>
