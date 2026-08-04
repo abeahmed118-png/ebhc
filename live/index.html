@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stream &mdash; EBHC 2026</title>
+  <meta name="description" content="Watch the Edmonton Ball Hockey Championship live. Streaming every game of EBHC 2026.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-deep: #0f1a2e;
+      --navy-light: #243556;
+      --orange: #f28322;
+      --orange-hover: #e07010;
+      --orange-glow: rgba(242, 131, 34, 0.3);
+      --gold-light: #f28322;
+      --silver: #c0c4cc;
+      --white: #ffffff;
+      --text-muted: #5a6478;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--navy-deep);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--white);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(15, 26, 46, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(242, 131, 34, 0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-back {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold-light); }
+
+    /* HEADER STRIP */
+    .live-header {
+      padding: 1.75rem 2rem 1.25rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(220, 38, 38, 0.4);
+      color: #ff6b6b;
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .live-header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .live-header h1 .highlight { color: var(--orange); }
+
+    .live-header p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+    }
+
+    /* PLAYER */
+    .player-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2rem 2rem;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .player-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .player-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .player-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: var(--navy);
+    }
+
+    .player-fallback.show { display: flex; }
+
+    .player-fallback h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .player-fallback p {
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      margin-bottom: 1.5rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--orange-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+
+    .stream-note {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--gold-light); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0.55rem 1rem; }
+      .nav-logo span { font-size: 1rem; letter-spacing: 1.5px; }
+      .live-header { padding: 1.25rem 1rem 1rem; }
+      .player-wrap { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../" class="nav-logo">
+      <img src="../ebhc-logo.png" alt="EBHC Logo">
+      <span>EBHC</span>
+    </a>
+    <a href="../" class="nav-back">&larr; Back to Site</a>
+  </nav>
+
+  <header class="live-header">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      Live Now
+    </div>
+    <h1>EBHC <span class="highlight">Live Stream</span></h1>
+    <p>Streaming every game of the Edmonton Ball Hockey Championship</p>
+  </header>
+
+  <main class="player-wrap">
+    <div class="player-frame">
+      <iframe
+        id="stream"
+        src="https://cloud.xbotgo.net/live?userId=MjA2Nzc0ODE4NzY2MjUyNDQxNg==&language=en_US&region=US"
+        title="EBHC Live Stream"
+        allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        loading="eager"
+      ></iframe>
+      <div class="player-fallback" id="fallback">
+        <h2>Stream can't load here</h2>
+        <p>The broadcast provider is blocking embedded playback. Open the stream in a new tab to keep watching.</p>
+        <a class="btn btn-primary" href="https://cloud.xbotgo.net/live?userId=MjA2Nzc0ODE4NzY2MjUyNDQxNg==&language=en_US&region=US" target="_blank" rel="noopener">
+          Open Stream &rarr;
+        </a>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-secondary" href="https://cloud.xbotgo.net/live?userId=MjA2Nzc0ODE4NzY2MjUyNDQxNg==&language=en_US&region=US" target="_blank" rel="noopener">
+        Open in New Tab
+      </a>
+      <button class="btn btn-secondary" type="button" onclick="document.getElementById('stream').requestFullscreen && document.getElementById('stream').requestFullscreen()">
+        Fullscreen
+      </button>
+    </div>
+    <p class="stream-note" style="margin-top: 1rem;">Powered by XBotGo. If the stream doesn't appear, tap "Open in New Tab".</p>
+  </main>
+
+  <footer>
+    &copy; 2026 Edmonton Ball Hockey Championship &nbsp;&middot;&nbsp; <a href="../">ebhctournament.ca</a>
+  </footer>
+
+  <script>
+    // If the iframe fails to load within a few seconds (likely blocked by X-Frame-Options
+    // or CSP frame-ancestors), reveal the fallback panel.
+    (function() {
+      var iframe = document.getElementById('stream');
+      var fallback = document.getElementById('fallback');
+      var loaded = false;
+
+      iframe.addEventListener('load', function() {
+        loaded = true;
+      });
+
+      setTimeout(function() {
+        if (!loaded) fallback.classList.add('show');
+      }, 6000);
+    })();
+  </script>
+</body>
+</html>

@@ -116,6 +116,28 @@
       box-shadow: 0 4px 20px var(--orange-glow);
     }
 
+    .nav-live {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 0.4rem;
+      color: #ff6b6b !important;
+    }
+
+    .nav-live:hover { color: #ff8a8a !important; }
+
+    .nav-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: nav-live-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes nav-live-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.25); }
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -996,6 +1018,7 @@
       <li><a href="#dates">Key Dates</a></li>
       <li><a href="#registration">Registration</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="/live/" class="nav-live"><span class="nav-live-dot"></span>Live</a></li>
       <li><a href="https://tournaments.shinnyofchampions.com/register/21154" target="_blank" class="nav-cta">Enter Your Team</a></li>
     </ul>
   </nav>
