@@ -27,6 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-poster.jpg">
+  <link rel="stylesheet" href="assets/site.css">
 
   <script type="application/ld+json">
   {
@@ -61,7 +62,7 @@
           "name": "Servus Credit Union Place",
           "address": { "@type": "PostalAddress", "streetAddress": "400 Campbell Road", "addressLocality": "St. Albert", "addressRegion": "AB", "postalCode": "T8N 0R8", "addressCountry": "CA" }
         },
-        "url": "https://ebhctournament.ca/2026/"
+        "url": "https://ebhctournament.ca/standings/?year=2026"
       }
     ]
   }
@@ -135,12 +136,6 @@
     .hero-shade { position: absolute; inset: 0; z-index: -2; background:
       radial-gradient(ellipse 70% 60% at 50% 45%, rgba(10,20,40,.25), rgba(10,20,40,.78) 70%),
       linear-gradient(180deg, rgba(10,20,40,.72) 0%, rgba(10,20,40,.35) 40%, rgba(10,20,40,.95) 100%); }
-    .hero-orbs { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-    .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffb066, var(--orange) 45%, #a44f07 100%); box-shadow: 0 30px 60px -20px rgba(0,0,0,.6), inset -10px -14px 30px rgba(0,0,0,.35); will-change: transform; opacity: .9; }
-    .orb::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background-image: radial-gradient(rgba(0,0,0,.28) 1.6px, transparent 2px); background-size: 12% 12%; opacity: .55; }
-    .orb-1 { width: 120px; height: 120px; left: 6%; top: 24%; }
-    .orb-2 { width: 64px; height: 64px; right: 9%; top: 18%; }
-    .orb-3 { width: 180px; height: 180px; right: -40px; bottom: 12%; opacity: .75; }
     .hero-content { position: relative; max-width: 900px; padding: 0 1.25rem; }
     .hero-logo { width: 190px; height: auto; margin: 0 auto 1.25rem; filter: drop-shadow(0 18px 30px rgba(0,0,0,.55)); }
     .hero-badge { display: inline-flex; align-items: center; gap: .6rem; background: rgba(242,131,34,.14); border: 1px solid rgba(242,131,34,.5); color: #ffc48a; font-family: var(--head); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: .95rem; padding: .45rem 1rem; border-radius: 999px; margin-bottom: 1.4rem; }
@@ -154,19 +149,12 @@
     .scroll-cue i { width: 1px; height: 36px; background: linear-gradient(var(--orange), transparent); animation: drop 1.8s infinite; }
     @keyframes drop { 0% { transform: scaleY(0); transform-origin: top;} 50% { transform: scaleY(1); transform-origin: top;} 51% { transform-origin: bottom;} 100% { transform: scaleY(0); transform-origin: bottom;} }
 
-    /* STATS BAR */
-    .stats-bar { background: var(--orange); color: var(--navy-900); }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .stat-item { padding: 1.3rem 1rem; text-align: center; border-left: 1px solid rgba(10,20,40,.15); }
-    .stat-item:first-child { border-left: 0; }
-    .stat-number { font-family: var(--head); font-weight: 800; font-size: 2.6rem; line-height: 1; }
-    .stat-label { font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; margin-top: .3rem; }
-
     /* Sections */
     section { padding: 6rem 0; position: relative; overflow: hidden; }
     .section-label { display: inline-block; font-family: var(--head); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; color: var(--orange); font-size: .95rem; margin-bottom: .7rem; }
     .section-title { font-size: clamp(2.3rem, 5vw, 3.6rem); font-weight: 800; margin-bottom: .8rem; }
     .section-sub { color: var(--muted); max-width: 680px; font-size: 1.08rem; margin-bottom: 3rem; }
+    .stats-links { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 2rem; }
     .dark { background: var(--navy-900); color: var(--white); }
     .dark .section-sub { color: rgba(255,255,255,.62); }
     .court { background-color: var(--off-white); background-image: linear-gradient(rgba(26,39,68,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(26,39,68,.06) 1px, transparent 1px); background-size: 34px 34px; }
@@ -182,55 +170,6 @@
     .deco-ring.blue { border-color: rgba(26,39,68,.06); left: -200px; right: auto; top: auto; bottom: -180px; }
     .deco-line { width: 3px; height: 200px; background: linear-gradient(transparent, var(--orange), transparent); left: 4%; top: 30%; opacity: .5; }
     .deco-ball { width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffb066, var(--orange) 45%, #a44f07); box-shadow: 0 20px 40px -15px rgba(0,0,0,.5); opacity: .9; }
-
-    /* CHAMPIONS */
-    .champ-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
-    .champ { position: relative; overflow: hidden; border-radius: var(--radius); padding: 2.2rem; background: linear-gradient(145deg, var(--navy-800), var(--navy-700)); border: 1px solid rgba(242,131,34,.25); }
-    .champ::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 100% 0%, rgba(242,131,34,.28), transparent 45%); }
-    .champ > * { position: relative; }
-    .champ-pool { font-family: var(--head); text-transform: uppercase; letter-spacing: .18em; color: var(--orange); font-weight: 700; font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
-    .champ-pool svg { width: 18px; height: 18px; }
-    .champ-name { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin: .5rem 0 .3rem; }
-    .champ-final { color: var(--silver-light); font-size: 1rem; }
-    .champ-final strong { color: var(--white); }
-    .champ-mvp { margin-top: 1rem; display: inline-flex; gap: .5rem; align-items: center; background: rgba(255,255,255,.07); border: 1px solid var(--line); padding: .45rem .8rem; border-radius: 8px; font-size: .9rem; }
-    .champ-mvp b { color: #ffc48a; }
-    .champ-links { margin-top: 1.4rem; display: flex; gap: .75rem; flex-wrap: wrap; }
-    .champ-links .btn { font-size: .95rem; padding: .6rem 1.1rem; }
-
-    /* STANDINGS TABLE */
-    .table-card { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-    .table-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
-    .table-head h3 { font-size: 1.5rem; }
-    .table-head span { color: rgba(255,255,255,.55); font-size: .9rem; }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    table.standings { width: 100%; border-collapse: collapse; min-width: 560px; font-variant-numeric: tabular-nums; }
-    table.standings th, table.standings td { padding: .8rem 1rem; text-align: center; border-bottom: 1px solid var(--line); font-size: .95rem; }
-    table.standings th { font-family: var(--head); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: rgba(255,255,255,.6); font-size: .85rem; }
-    table.standings td:nth-child(2), table.standings th:nth-child(2) { text-align: left; font-weight: 600; }
-    table.standings tr:last-child td { border-bottom: 0; }
-    table.standings tr.pool-b td { background: rgba(242,131,34,.06); }
-    .rk { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.08); font-family: var(--head); font-weight: 700; }
-    .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .15rem .45rem; border-radius: 4px; margin-left: .5rem; vertical-align: middle; }
-    .tag-b { background: var(--orange); color: var(--navy-900); }
-    .tag-c { background: rgba(255,255,255,.15); color: var(--white); }
-    .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; padding: .9rem 1.4rem; font-size: .85rem; color: rgba(255,255,255,.6); border-top: 1px solid var(--line); }
-    .stats-links { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 2rem; }
-
-    /* REPLAYS */
-    .replay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .yt { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; background: var(--navy-800) center/cover no-repeat; cursor: pointer; box-shadow: 0 25px 50px -25px rgba(0,0,0,.5); }
-    .yt img { width: 100%; height: 100%; object-fit: cover; }
-    .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .yt-play { position: absolute; inset: 0; display: grid; place-items: center; background: linear-gradient(180deg, rgba(10,20,40,.1), rgba(10,20,40,.55)); transition: background .2s; }
-    .yt:hover .yt-play { background: linear-gradient(180deg, rgba(10,20,40,.05), rgba(10,20,40,.4)); }
-    .yt-play b { width: 74px; height: 52px; border-radius: 14px; background: var(--orange); display: grid; place-items: center; box-shadow: 0 10px 30px -8px var(--orange-glow); transition: transform .2s; }
-    .yt:hover .yt-play b { transform: scale(1.08); }
-    .yt-play b::after { content: ""; border-left: 22px solid var(--navy-900); border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 5px; }
-    .yt-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 1rem 1.2rem; color: var(--white); background: linear-gradient(transparent, rgba(10,20,40,.9)); }
-    .yt-caption h3 { font-size: 1.35rem; }
-    .yt-caption span { font-size: .85rem; color: var(--silver-light); }
-    .yt.playing .yt-play, .yt.playing .yt-caption, .yt.playing img { display: none; }
 
     /* CARDS */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -313,7 +252,7 @@
     .mobile-cta { display: none; }
 
     @media (max-width: 960px) {
-      .grid-3, .details-grid, .champ-grid, .replay-grid, .reg-layout, .venue-layout { grid-template-columns: 1fr 1fr; }
+      .grid-3, .details-grid, .reg-layout, .venue-layout { grid-template-columns: 1fr 1fr; }
       .timeline { grid-template-columns: 1fr 1fr; }
       .timeline::before { display: none; }
     }
@@ -324,14 +263,9 @@
       .nav-links a { display: block; padding: .8rem .5rem; font-size: 1.1rem; }
       .nav-links .nav-cta { margin: .5rem 0 0; text-align: center; }
       section { padding: 4.2rem 0; }
-      .grid-3, .details-grid, .champ-grid, .replay-grid, .reg-layout, .venue-layout, .timeline { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(3) { border-left: 0; }
-      .stat-item { border-top: 1px solid rgba(10,20,40,.12); }
-      .stat-item:nth-child(-n+2) { border-top: 0; }
+      .grid-3, .details-grid, .reg-layout, .venue-layout, .timeline { grid-template-columns: 1fr; }
       .hero { padding-top: 6rem; }
       .hero-logo { width: 140px; }
-      .orb-1 { width: 70px; height: 70px; } .orb-3 { width: 120px; height: 120px; }
       .champ { padding: 1.6rem; }
       .reg-card { padding: 1.8rem; }
       .mobile-cta { display: block; position: fixed; bottom: 0; left: 0; right: 0; z-index: 90; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: rgba(10,20,40,.92); backdrop-filter: blur(10px); border-top: 1px solid rgba(242,131,34,.3); }
@@ -346,18 +280,18 @@
     }
   </style>
 </head>
-<body>
+<body data-root="">
 
 <nav class="top" aria-label="Main">
   <div class="container nav-inner">
     <a href="#top" class="nav-logo"><img src="assets/logo-160.png" alt="EBHC shield logo" width="160" height="181"><span>EBHC</span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navlinks">
-      <li><a href="#results">2026 Results</a></li>
+      <li><a href="standings/">Standings</a></li>
+      <li><a href="mvps/">Finals MVPs</a></li>
+      <li><a href="stats/">Stats</a></li>
       <li><a href="#replays">Replays</a></li>
       <li><a href="#experience">The Tournament</a></li>
-      <li><a href="#details">Format</a></li>
-      <li><a href="#venue">Venue</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="live/" class="nav-live"><span class="nav-live-dot"></span>Live</a></li>
       <li><a href="#registration" class="nav-cta">EBHC 2027</a></li>
@@ -372,18 +306,13 @@
     <video id="heroVideo" muted loop playsinline autoplay preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true"></video>
   </div>
   <div class="hero-shade"></div>
-  <div class="hero-orbs" aria-hidden="true">
-    <div class="orb orb-1" data-depth="0.6"></div>
-    <div class="orb orb-2" data-depth="0.9"></div>
-    <div class="orb orb-3" data-depth="0.45"></div>
-  </div>
   <div class="hero-content">
     <img src="assets/logo.png" alt="Edmonton Ball Hockey Championship" class="hero-logo" width="520" height="588">
     <div class="hero-badge"><span>EBHC 2027</span> &bull; <span>Dates to be announced</span></div>
     <h1>Edmonton's City <span class="highlight">Championship</span></h1>
-    <p class="hero-sub">Adult ball hockey's title weekend. In 2026, eight teams battled through three days at Servus Place and two champions were crowned. Next up: EBHC 2027.</p>
+    <p class="hero-sub">Adult ball hockey's title weekend at Servus Place. Two champions were crowned in 2026. The goal for 2027: more teams and three champions.</p>
     <div class="hero-actions">
-      <a href="#results" class="btn btn-primary">See 2026 Results</a>
+      <a href="standings/" class="btn btn-primary">Standings &amp; Results</a>
       <a href="#replays" class="btn btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch Replays</a>
     </div>
     <p class="hero-note">Follow <a href="https://www.instagram.com/ebhctournament/" target="_blank" rel="noopener">@ebhctournament</a> for the 2027 announcement.</p>
@@ -391,99 +320,32 @@
   <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
 </header>
 
-<!-- STATS BAR -->
-<div class="stats-bar" aria-label="2026 by the numbers">
-  <div class="container stats-grid">
-    <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">Teams in 2026</div></div>
-    <div class="stat-item"><div class="stat-number">18</div><div class="stat-label">Games Played</div></div>
-    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Champions Crowned</div></div>
-    <div class="stat-item"><div class="stat-number">16</div><div class="stat-label">Full Replays</div></div>
-  </div>
-</div>
-
-<!-- 2026 RESULTS -->
+<!-- LATEST CHAMPIONSHIP -->
 <section id="results" class="dark">
   <div class="deco deco-ring" data-depth="0.12" aria-hidden="true"></div>
   <div class="container">
-    <span class="section-label rv">2026 Championship</span>
+    <span class="section-label rv"><span data-slot="year">Latest</span> Championship</span>
     <h2 class="section-title rv">Champions Crowned</h2>
-    <p class="section-sub rv">August 7–9, 2026 at Servus Credit Union Place. Eight teams played a full round robin, then split into two playoff pools with a title on the line in each.</p>
-
-    <div class="champ-grid">
-      <article class="champ rv">
-        <div class="champ-pool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Pool B Champions</div>
-        <h3 class="champ-name">Wingmen HC</h3>
-        <p class="champ-final">Final: <strong>Wingmen HC 4</strong> – JDP Eagles 3</p>
-        <p class="champ-final">Undefeated through the weekend: 3–0 in the round robin, then wins over Dakkus and JDP Eagles.</p>
-        <div class="champ-mvp">Finals MVP: <b>Mohamed Dahrouge</b></div>
-        <div class="champ-links">
-          <a class="btn btn-primary" href="https://www.youtube.com/watch?v=7inGUowyP5Q" target="_blank" rel="noopener">Watch the Final</a>
-        </div>
-      </article>
-      <article class="champ rv rv-d1">
-        <div class="champ-pool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Pool C Champions</div>
-        <h3 class="champ-name">Mad Dogs</h3>
-        <p class="champ-final">Final: <strong>Mad Dogs 3</strong> – Jets 2</p>
-        <div class="champ-mvp">Finals MVP: <b>Dryden Ferchoff</b></div>
-        <div class="champ-links">
-          <a class="btn btn-primary" href="https://www.youtube.com/watch?v=97iQNqjfG0o" target="_blank" rel="noopener">Watch the Final</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="table-card rv">
-      <div class="table-head">
-        <h3>Round Robin Standings</h3>
-        <span>Division C &bull; 3 games each &bull; Source: HockeyShift</span>
-      </div>
-      <div class="table-wrap">
-        <table class="standings">
-          <thead><tr><th>Rk</th><th>Team</th><th>GP</th><th>W</th><th>L</th><th>Pts</th><th>GF</th><th>GA</th><th>Diff</th></tr></thead>
-          <tbody>
-            <tr class="pool-b"><td><span class="rk">1</span></td><td>Wingmen HC <span class="tag tag-b">Pool B</span></td><td>3</td><td>3</td><td>0</td><td>6</td><td>23</td><td>8</td><td>+15</td></tr>
-            <tr class="pool-b"><td><span class="rk">2</span></td><td>Lubicon Weasels <span class="tag tag-b">Pool B</span></td><td>3</td><td>3</td><td>0</td><td>6</td><td>17</td><td>4</td><td>+13</td></tr>
-            <tr class="pool-b"><td><span class="rk">3</span></td><td>Dakkus <span class="tag tag-b">Pool B</span></td><td>3</td><td>2</td><td>1</td><td>4</td><td>20</td><td>5</td><td>+15</td></tr>
-            <tr class="pool-b"><td><span class="rk">4</span></td><td>JDP Eagles <span class="tag tag-b">Pool B</span></td><td>3</td><td>2</td><td>1</td><td>4</td><td>20</td><td>7</td><td>+13</td></tr>
-            <tr><td><span class="rk">5</span></td><td>Jets <span class="tag tag-c">Pool C</span></td><td>3</td><td>1</td><td>2</td><td>2</td><td>7</td><td>14</td><td>-7</td></tr>
-            <tr><td><span class="rk">6</span></td><td>Mad Dogs <span class="tag tag-c">Pool C</span></td><td>3</td><td>1</td><td>2</td><td>2</td><td>15</td><td>25</td><td>-10</td></tr>
-            <tr><td><span class="rk">7</span></td><td>Snakearm <span class="tag tag-c">Pool C</span></td><td>3</td><td>0</td><td>3</td><td>0</td><td>10</td><td>26</td><td>-16</td></tr>
-            <tr><td><span class="rk">8</span></td><td>Inline Group Inc <span class="tag tag-c">Pool C</span></td><td>3</td><td>0</td><td>3</td><td>0</td><td>2</td><td>25</td><td>-23</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="legend"><span><span class="tag tag-b" style="margin:0 .4rem 0 0">Pool B</span> Top four seeds &rarr; Pool B playoffs</span><span><span class="tag tag-c" style="margin:0 .4rem 0 0">Pool C</span> Seeds 5–8 &rarr; Pool C playoffs</span></div>
-    </div>
-
+    <p class="section-sub rv" data-slot="format">Results from the most recent EBHC.</p>
+    <div class="rv" data-slot="champions"></div>
     <div class="stats-links rv">
-      <a class="btn btn-primary" href="2026/">Full 2026 Results &amp; Scores</a>
-      <a class="btn btn-outline" href="https://tournaments.shinnyofchampions.com/stats#/3724/leaders/table?game_type=Round%20Robin&page=1&player_type=players&division_id=47353" target="_blank" rel="noopener">Player Stats &amp; Leaders</a>
-      <a class="btn btn-outline" href="https://tournaments.shinnyofchampions.com/stats#/3724/standings?division_id=47353&render=division" target="_blank" rel="noopener">Official Standings</a>
+      <a class="btn btn-primary" href="standings/">Standings &amp; Scores</a>
+      <a class="btn btn-outline" href="mvps/">Finals MVPs</a>
+      <a class="btn btn-outline" href="stats/">Stats &amp; Leaders</a>
     </div>
   </div>
 </section>
 
 <!-- REPLAYS -->
 <section id="replays" class="court">
-  <div class="deco deco-ball" style="right:6%;top:8%" data-depth="0.25" aria-hidden="true"></div>
   <div class="container">
     <span class="section-label rv">Game Replays</span>
     <h2 class="section-title rv">Every Game, Start to Finish</h2>
-    <p class="section-sub rv">Full match replays from EBHC 2026 are on our YouTube channel. Start with the two finals.</p>
-    <div class="replay-grid">
-      <div class="yt rv" data-id="7inGUowyP5Q" role="button" tabindex="0" aria-label="Play: Pool B Final, Wingmen HC vs JDP Eagles">
-        <img src="https://i.ytimg.com/vi/7inGUowyP5Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-        <div class="yt-play"><b></b></div>
-        <div class="yt-caption"><h3>Pool B Final &bull; Wingmen HC 4 – JDP Eagles 3</h3><span>Game 18 &bull; Sunday, August 9 &bull; 1:04:24</span></div>
-      </div>
-      <div class="yt rv rv-d1" data-id="97iQNqjfG0o" role="button" tabindex="0" aria-label="Play: Pool C Final, Mad Dogs vs Jets">
-        <img src="https://i.ytimg.com/vi/97iQNqjfG0o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-        <div class="yt-play"><b></b></div>
-        <div class="yt-caption"><h3>Pool C Final &bull; Mad Dogs 3 – Jets 2</h3><span>Game 17 &bull; Sunday, August 9 &bull; 1:09:45</span></div>
-      </div>
-    </div>
+    <p class="section-sub rv">Full match replays are on our YouTube channel. Start with the finals.</p>
+    <div class="rv" data-slot="replays"></div>
     <div class="stats-links rv">
-      <a class="btn btn-dark" href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>All 16 Replays on YouTube</a>
-      <a class="btn btn-outline" style="border-color:rgba(26,39,68,.3);color:var(--navy-700)" href="2026/#scores">Scores by Game</a>
+      <a class="btn btn-dark" href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>All Replays on YouTube</a>
+      <a class="btn btn-ghost" href="standings/#scores">Scores by Game</a>
     </div>
   </div>
 </section>
@@ -618,7 +480,7 @@
       <details class="faq"><summary>How many teams can enter?</summary><p>Entry is capped and spots are first-come, first-served. Once spots are filled, registration closes regardless of the deadline date. In 2026 the cap was 20 teams.</p></details>
       <details class="faq"><summary>What did it cost in 2026, and what was included?</summary><p>The 2026 entry fee was $1,000 per team, with a $300 non-refundable deposit at registration and the balance due before the tournament. It included certified officials and timekeepers for every game, full tournament operations, championship awards, and a minimum 4-game guarantee. 2027 pricing will be confirmed with the announcement.</p></details>
       <details class="faq"><summary>How does the deposit work?</summary><p>A deposit is due at registration to secure your team's spot. The remaining balance must be paid by the announced deadline, and final rosters are submitted to the organizers ahead of the weekend.</p></details>
-      <details class="faq"><summary>Where can I find stats, standings and replays?</summary><p>Official stats and standings live on HockeyShift: <a href="https://tournaments.shinnyofchampions.com/stats#/3724/leaders/table?game_type=Round%20Robin&page=1&player_type=players&division_id=47353" target="_blank" rel="noopener">player leaders</a> and <a href="https://tournaments.shinnyofchampions.com/stats#/3724/standings?division_id=47353&render=division" target="_blank" rel="noopener">standings</a>. Full game replays are on <a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">YouTube</a>, and games are streamed live during the tournament on our <a href="live/">Live page</a>.</p></details>
+      <details class="faq"><summary>Where can I find stats, standings and replays?</summary><p>Every season is on this site, filterable by year: <a href="standings/">standings and scores</a>, <a href="mvps/">Finals MVPs</a> and <a href="stats/">stats and leaders</a>, with links through to the official HockeyShift pages. Full game replays are on <a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">YouTube</a>, and games are streamed live during the tournament on our <a href="live/">Live page</a>.</p></details>
       <details class="faq"><summary>Where is the tournament held?</summary><p>Servus Credit Union Place, 400 Campbell Road, St. Albert. Games run in the field houses. Full details and directions are provided to registered teams.</p></details>
       <details class="faq"><summary>Who organizes the Edmonton Ball Hockey Championship?</summary><p>EBHC is organized by <a href="https://shinnyofchampions.com" target="_blank" rel="noopener">Shinny of Champions</a>. Team registration is managed through SOC Tournaments using the HockeyShift platform.</p></details>
     </div>
@@ -646,7 +508,9 @@
   <div class="container foot">
     <p>&copy; <span id="year">2026</span> Edmonton Ball Hockey Championship &middot; Organized by <a href="https://shinnyofchampions.com" target="_blank" rel="noopener">Shinny of Champions</a></p>
     <div class="foot-links">
-      <a href="2026/">2026 Results</a>
+      <a href="standings/">Standings</a>
+      <a href="mvps/">Finals MVPs</a>
+      <a href="stats/">Stats</a>
       <a href="live/">Live Stream</a>
       <a href="https://www.instagram.com/ebhctournament/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/ebhctournament" target="_blank" rel="noopener">Facebook</a>
@@ -655,10 +519,12 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a href="#results" class="btn btn-primary">2026 Results &amp; Replays</a></div>
+<div class="mobile-cta"><a href="standings/" class="btn btn-primary">Standings &amp; Replays</a></div>
 
+<script src="assets/site.js"></script>
 <script>
 (function () {
+  var nav = document.querySelector('nav.top');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Hero video: pick size, respect reduced motion
@@ -673,11 +539,6 @@
       var p = v.play(); if (p && p.catch) p.catch(function(){});
     }
   }
-
-  // Nav
-  var nav = document.querySelector('nav.top'), toggle = document.querySelector('.nav-toggle'), links = document.getElementById('navlinks');
-  toggle.addEventListener('click', function () { var open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); });
-  links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }); });
 
   // Reveal on scroll
   var rv = document.querySelectorAll('.rv');
@@ -715,22 +576,7 @@
     window.addEventListener('load', function () { measure(); update(); });
   } else { nav.classList.toggle('solid', window.pageYOffset > 40); window.addEventListener('scroll', function(){ nav.classList.toggle('solid', window.pageYOffset > 40); }, { passive: true }); }
 
-  // Lite YouTube embeds
-  document.querySelectorAll('.yt').forEach(function (box) {
-    function play() {
-      if (box.classList.contains('playing')) return;
-      var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-id') + '?autoplay=1&rel=0';
-      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
-      f.title = box.getAttribute('aria-label');
-      f.setAttribute('allowfullscreen', '');
-      box.appendChild(f); box.classList.add('playing');
-    }
-    box.addEventListener('click', play);
-    box.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
-  });
-
-  document.getElementById('year').textContent = new Date().getFullYear();
+  EBHC.home().then(function () { if (!reduce) { measure(); update(); } });
 })();
 </script>
 </body>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EBHC Finals MVPs by Year - Edmonton Ball Hockey Championship</title>
+  <meta name="description" content="Every Finals MVP from the Edmonton Ball Hockey Championship, by year and playoff pool.">
+  <link rel="canonical" href="https://ebhctournament.ca/mvps/">
+  <meta name="theme-color" content="#0a1428">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EBHC - Edmonton Ball Hockey Championship">
+  <meta property="og:title" content="EBHC Finals MVPs by Year - Edmonton Ball Hockey Championship">
+  <meta property="og:description" content="Every Finals MVP from the Edmonton Ball Hockey Championship, by year and playoff pool.">
+  <meta property="og:url" content="https://ebhctournament.ca/mvps/">
+  <meta property="og:image" content="https://ebhctournament.ca/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>.page-hero { --hero-img: url('../assets/hero-poster.jpg'); }</style>
+</head>
+<body data-root="../">
+
+<nav class="top always-solid" aria-label="Main">
+  <div class="container nav-inner">
+    <a href="../" class="nav-logo"><img src="../assets/logo-160.png" alt="EBHC shield logo" width="160" height="181"><span>EBHC</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="../standings/">Standings</a></li>
+      <li><a href="../mvps/" aria-current="page">Finals MVPs</a></li>
+      <li><a href="../stats/">Stats</a></li>
+      <li><a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">Replays</a></li>
+      <li><a href="../#experience">The Tournament</a></li>
+      <li><a href="../live/" class="nav-live"><span class="nav-live-dot"></span>Live</a></li>
+      <li><a href="../#registration" class="nav-cta">EBHC 2027</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <div class="hero-row">
+      <div>
+        <span class="label"><span data-slot="year">&nbsp;</span> <span data-slot="meta"></span></span>
+        <h1>Finals MVPs</h1>
+        <p>The players who showed up when it mattered most.</p>
+      </div>
+      <div class="year-filter"><label for="yearSelect">Season</label><select id="yearSelect" aria-label="Choose a season"><option>All years</option></select></div>
+    </div>
+  </div>
+</header>
+
+<section id="mvps" style="padding-top:3rem">
+  <div class="container">
+    <span class="label">Finals MVPs</span>
+    <h2 class="title">Big Game Players</h2>
+    <p class="sub">The player named most valuable in each championship final. Choose a season above or browse every year.</p>
+    <div data-slot="mvps"></div>
+  </div>
+</section>
+
+<section id="champions" class="dark" data-slot="champions-wrap">
+  <div class="container">
+    <div data-slot="champions"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <p>&copy; <span id="year">2026</span> Edmonton Ball Hockey Championship &middot; Organized by <a href="https://shinnyofchampions.com" target="_blank" rel="noopener">Shinny of Champions</a></p>
+    <div class="foot-links">
+      <a href="../">Home</a>
+      <a href="../standings/">Standings</a>
+      <a href="../mvps/">Finals MVPs</a>
+      <a href="../stats/">Stats</a>
+      <a href="../live/">Live Stream</a>
+      <a href="https://www.instagram.com/ebhctournament/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ebhctournament" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js"></script>
+<script>EBHC.mvps();</script>
+</body>
+</html>
