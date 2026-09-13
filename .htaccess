@@ -8,7 +8,6 @@ RewriteRule ^ https://ebhctournament.ca%{REQUEST_URI} [R=301,L]
 
 # Memorable short links
 Redirect 301 /results /2026/
-Redirect 301 /2026 /2026/
 Redirect 301 /stats https://tournaments.shinnyofchampions.com/stats#/3724/leaders/table?game_type=Round%20Robin&page=1&player_type=players&division_id=47353
 Redirect 301 /standings https://tournaments.shinnyofchampions.com/stats#/3724/standings?division_id=47353&render=division
 Redirect 301 /replays https://www.youtube.com/@ebhctournament
