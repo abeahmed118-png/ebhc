@@ -131,18 +131,20 @@ td.team { font-weight: 600; }
 .day h3 { font-size: 1.7rem; margin-bottom: .9rem; display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
 .day h3 small { font-family: var(--body); font-weight: 500; text-transform: none; color: var(--muted); font-size: .9rem; }
 .games { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
-.game { background: var(--white); border: 1px solid rgba(26,39,68,.08); border-radius: 12px; padding: .95rem 1.1rem; display: grid; grid-template-columns: auto 1fr auto; gap: .3rem 1rem; align-items: center; }
+.game { background: var(--white); border: 1px solid rgba(26,39,68,.08); border-radius: 12px; padding: .9rem 1.1rem 1rem; display: flex; flex-direction: column; gap: .3rem; }
 .game.po { border-color: rgba(242,131,34,.45); box-shadow: 0 0 0 3px rgba(242,131,34,.08); }
-.g-num { font-family: var(--head); font-weight: 700; color: var(--muted); font-size: .85rem; letter-spacing: .1em; grid-row: 1 / span 2; align-self: start; padding-top: .2rem; }
-.g-team { display: flex; justify-content: space-between; gap: 1rem; font-weight: 500; }
-.g-team b { font-family: var(--head); font-size: 1.35rem; font-weight: 800; min-width: 1.5ch; text-align: right; }
-.g-team.w { font-weight: 700; color: var(--navy-900); }
-.g-team.w b { color: var(--orange-deep); }
-.g-meta { grid-row: 1 / span 2; display: flex; flex-direction: column; align-items: flex-end; gap: .35rem; font-size: .78rem; color: var(--muted); text-align: right; }
-.g-meta .round { font-family: var(--head); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--orange-deep); font-size: .8rem; }
-.g-meta a { display: inline-flex; align-items: center; gap: .3rem; color: var(--navy-700); text-decoration: none; font-weight: 600; border: 1px solid rgba(26,39,68,.2); padding: .25rem .55rem; border-radius: 6px; }
-.g-meta a:hover { background: var(--navy-900); color: var(--white); border-color: var(--navy-900); }
-.g-meta a svg { width: 12px; height: 12px; fill: currentColor; }
+.g-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; font-size: .78rem; color: var(--muted); margin-bottom: .25rem; }
+.g-num { font-family: var(--head); font-weight: 700; letter-spacing: .1em; }
+.g-head .round { font-family: var(--head); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--orange-deep); font-size: .8rem; }
+.g-time { margin-left: auto; text-align: right; }
+.g-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-weight: 500; }
+.g-row b { font-family: var(--head); font-size: 1.4rem; font-weight: 800; min-width: 2ch; text-align: right; }
+.g-row.w { font-weight: 700; color: var(--navy-900); }
+.g-row.w b { color: var(--orange-deep); }
+.g-foot { display: flex; justify-content: flex-end; margin-top: .35rem; }
+.g-foot a { display: inline-flex; align-items: center; gap: .35rem; color: var(--navy-700); text-decoration: none; font-weight: 600; font-size: .8rem; border: 1px solid rgba(26,39,68,.2); padding: .3rem .65rem; border-radius: 6px; }
+.g-foot a:hover { background: var(--navy-900); color: var(--white); border-color: var(--navy-900); }
+.g-foot a svg { width: 12px; height: 12px; fill: currentColor; }
 
 /* STATS LINK CARDS */
 .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
@@ -198,9 +200,14 @@ footer { background: #060d1c; color: rgba(255,255,255,.55); padding: 2.5rem 0; f
   .page-hero { padding-top: 6.5rem; }
   .champ { padding: 1.6rem; }
 }
-@media (max-width: 480px) {
-  .game { grid-template-columns: auto 1fr; }
-  .g-meta { grid-row: auto; grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
+@media (max-width: 640px) {
+  table.champs { min-width: 0 !important; }
+  table.champs thead { display: none; }
+  table.champs tr { display: block; padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+  table.champs tr:last-child { border-bottom: 0; }
+  table.champs td { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; border: 0; padding: .3rem 1.1rem; text-align: right; white-space: normal; }
+  table.champs td::before { content: attr(data-label); font-family: var(--head); text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; color: rgba(255,255,255,.55); text-align: left; }
+  table.champs td.team { font-size: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

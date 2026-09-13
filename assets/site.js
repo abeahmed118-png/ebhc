@@ -52,8 +52,10 @@
 
   function gameHtml(g) {
     var awayW = g.as > g.hs, homeW = g.hs > g.as;
-    var meta = (g.round ? '<span class="round">' + esc(g.round) + '</span>' : '') + '<span>' + esc(g.time) + (g.rink ? ' &bull; ' + esc(g.rink) : '') + '</span>' + (g.video ? '<a href="https://www.youtube.com/watch?v=' + esc(g.video) + '" target="_blank" rel="noopener">' + PLAY + 'Replay</a>' : '');
-    return '<div class="game' + (g.type === 'PO' ? ' po' : '') + '"><div class="g-num">G' + esc(g.n) + '</div><div class="g-team' + (awayW ? ' w' : '') + '">' + esc(g.away) + '<b>' + esc(g.as) + '</b></div><div class="g-meta">' + meta + '</div><div class="g-team' + (homeW ? ' w' : '') + '">' + esc(g.home) + '<b>' + esc(g.hs) + '</b></div></div>';
+    var head = '<div class="g-head"><span class="g-num">G' + esc(g.n) + '</span>' + (g.round ? '<span class="round">' + esc(g.round) + '</span>' : '') + '<span class="g-time">' + esc(g.time) + (g.rink ? ' &bull; ' + esc(g.rink) : '') + '</span></div>';
+    var rows = '<div class="g-row' + (awayW ? ' w' : '') + '"><span>' + esc(g.away) + '</span><b>' + esc(g.as) + '</b></div><div class="g-row' + (homeW ? ' w' : '') + '"><span>' + esc(g.home) + '</span><b>' + esc(g.hs) + '</b></div>';
+    var foot = g.video ? '<div class="g-foot"><a href="https://www.youtube.com/watch?v=' + esc(g.video) + '" target="_blank" rel="noopener">' + PLAY + 'Watch replay</a></div>' : '';
+    return '<div class="game' + (g.type === 'PO' ? ' po' : '') + '">' + head + rows + foot + '</div>';
   }
 
   function renderScores(season) {
@@ -132,7 +134,7 @@
       var fg = (season.games || []).filter(function (g) { return g.n === p.finalGame; })[0];
       var final = p.runnerUp ? esc(p.finalScore || '') + ' vs ' + esc(p.runnerUp) : '';
       var replay = fg && fg.video ? '<a href="https://www.youtube.com/watch?v=' + esc(fg.video) + '" target="_blank" rel="noopener">Watch</a>' : '';
-      return '<tr><td class="l pool">' + esc(p.title) + '</td><td class="l team">' + esc(p.champion) + '</td><td class="l">' + final + '</td><td class="l mvp-cell">' + (p.mvp ? esc(p.mvp.name) : '') + '</td><td>' + replay + '</td></tr>';
+      return '<tr><td class="l pool" data-label="Pool">' + esc(p.title) + '</td><td class="l team" data-label="Champion">' + esc(p.champion) + '</td><td class="l" data-label="Final">' + final + '</td><td class="l mvp-cell" data-label="Finals MVP">' + (p.mvp ? esc(p.mvp.name) : '') + '</td><td data-label="Replay">' + replay + '</td></tr>';
     }).join('');
     return '<div class="card"><div class="wrap"><table class="champs" style="min-width:560px"><thead><tr><th class="l">Pool</th><th class="l">Champion</th><th class="l">Final</th><th class="l">Finals MVP</th><th>Replay</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>';
   }
