@@ -1,2 +1,4 @@
 Screenshot*
 .DS_Store
+.playwright-mcp/
+qa-*.jpg

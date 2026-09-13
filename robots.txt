@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ebhctournament.ca/sitemap.xml
