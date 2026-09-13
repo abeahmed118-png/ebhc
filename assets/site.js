@@ -76,7 +76,6 @@
       var more = opts.moreLink ? '<a class="btn btn-outline btn-sm" href="' + ROOT + 'standings/?year=' + esc(season.year) + '">Standings &amp; Scores</a>' : '';
       return '<article class="champ"><div class="champ-pool">' + TROPHY + esc(p.title) + ' Champions &bull; ' + esc(season.year) + '</div><h3 class="champ-name">' + esc(p.champion) + '</h3>' +
         (p.runnerUp ? '<p>Final: <strong>' + esc(p.champion) + '</strong> ' + esc(p.finalScore || '') + ' ' + esc(p.runnerUp) + '</p>' : '') +
-        (p.path ? '<p>' + esc(p.path) + '</p>' : '') +
         (p.mvp ? '<div class="champ-mvp">Finals MVP: <b>' + esc(p.mvp.name) + '</b></div>' : '') +
         (watch || more ? '<div class="champ-links">' + watch + more + '</div>' : '') + '</article>';
     }).join('') + '</div>';
@@ -120,9 +119,22 @@
     var finals = (season.playoffs || []).map(function (p) { return (season.games || []).filter(function (g) { return g.n === p.finalGame && g.video; })[0]; }).filter(Boolean);
     if (!finals.length) return '<div class="empty">Finals replays for ' + esc(season.year) + ' are coming soon.</div>';
     return '<div class="replay-grid">' + finals.map(function (g) {
-      var label = esc((g.round || 'Final') + ' &bull; ' + g.away + ' ' + g.as + ' – ' + g.home + ' ' + g.hs).replace(/&amp;bull;/g, '&bull;');
-      return '<div class="yt" data-id="' + esc(g.video) + '" role="button" tabindex="0" aria-label="Play: ' + esc(g.round || 'Final') + ', ' + esc(g.away) + ' vs ' + esc(g.home) + '"><img src="https://i.ytimg.com/vi/' + esc(g.video) + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><div class="yt-play"><b></b></div><div class="yt-caption"><h3>' + label + '</h3><span>Game ' + esc(g.n) + ' &bull; ' + esc(g.day) + '</span></div></div>';
+      var winFirst = g.hs > g.as ? [g.home, g.hs, g.away, g.as] : [g.away, g.as, g.home, g.hs];
+      return '<div class="yt" data-id="' + esc(g.video) + '" role="button" tabindex="0" aria-label="Play: ' + esc(g.round || 'Final') + ', ' + esc(g.away) + ' vs ' + esc(g.home) + '">' +
+        '<div class="yt-thumb"><img src="https://i.ytimg.com/vi/' + esc(g.video) + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><div class="yt-play"><b></b></div></div>' +
+        '<div class="yt-caption"><h3>' + esc(g.round || 'Final') + '</h3><span class="score">' + esc(winFirst[0]) + ' ' + esc(winFirst[1]) + ' – ' + esc(winFirst[3]) + ' ' + esc(winFirst[2]) + '</span><span class="meta">Game ' + esc(g.n) + ' &bull; ' + esc(g.day) + ' &bull; ' + esc(season.year) + '</span></div></div>';
     }).join('') + '</div>';
+  }
+
+  function renderChampionsTable(season) {
+    if (!season || !season.playoffs || !season.playoffs.length) return '<div class="empty">Champions for ' + esc(season && season.year) + ' have not been posted yet.</div>';
+    var rows = season.playoffs.map(function (p) {
+      var fg = (season.games || []).filter(function (g) { return g.n === p.finalGame; })[0];
+      var final = p.runnerUp ? esc(p.finalScore || '') + ' vs ' + esc(p.runnerUp) : '';
+      var replay = fg && fg.video ? '<a href="https://www.youtube.com/watch?v=' + esc(fg.video) + '" target="_blank" rel="noopener">Watch</a>' : '';
+      return '<tr><td class="l pool">' + esc(p.title) + '</td><td class="l team">' + esc(p.champion) + '</td><td class="l">' + final + '</td><td class="l mvp-cell">' + (p.mvp ? esc(p.mvp.name) : '') + '</td><td>' + replay + '</td></tr>';
+    }).join('');
+    return '<div class="card"><div class="wrap"><table class="champs" style="min-width:560px"><thead><tr><th class="l">Pool</th><th class="l">Champion</th><th class="l">Final</th><th class="l">Finals MVP</th><th>Replay</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>';
   }
 
   /* ---------- lite YouTube ---------- */
@@ -135,7 +147,7 @@
         f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-id') + '?autoplay=1&rel=0';
         f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
         f.title = box.getAttribute('aria-label') || 'Video'; f.setAttribute('allowfullscreen', '');
-        box.appendChild(f); box.classList.add('playing');
+        (box.querySelector('.yt-thumb') || box).appendChild(f); box.classList.add('playing');
       }
       box.addEventListener('click', play);
       box.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
@@ -179,7 +191,7 @@
 
   window.EBHC = {
     load: load, wireYouTube: wireYouTube,
-    standings: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); setText('format', s.format || ''); set('standings', renderStandings(s, false)); set('scores', renderScores(s)); set('champions', renderChampions(s)); var a = slot('official'); if (a && s.links && s.links.standings) { a.href = s.links.standings; a.hidden = false; } else if (a) a.hidden = true; } }); },
+    standings: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); setText('format', s.format || ''); set('standings', renderStandings(s, false)); set('scores', renderScores(s)); set('champions', renderChampionsTable(s)); var a = slot('official'); if (a && s.links && s.links.standings) { a.href = s.links.standings; a.hidden = false; } else if (a) a.hidden = true; } }); },
     mvps: function () { yearPage({ allowAll: true, defaultAll: true, render: function (seasons, s, val) { var list = val === 'all' ? seasons : [s]; setText('year', val === 'all' ? 'All years' : String(s.year)); set('mvps', renderMvps(list)); var w = slot('champions-wrap'); if (w) w.hidden = (val === 'all'); set('champions', val === 'all' ? '' : renderChampions(s, { moreLink: true })); } }); },
     stats: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); set('links', renderStatLinks(s)); set('leaders', renderLeaders(s)); } }); },
     home: function () { return load().then(function (data) { var s = data.seasons[0]; if (!s) return; setText('year', s.year); setText('format', s.format || ''); set('champions', renderChampions(s, { moreLink: true })); set('replays', renderFinalsReplays(s)); wireYouTube(); }).catch(function () { set('champions', '<div class="empty" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)">Results are on the <a href="standings/">Standings page</a>.</div>'); }); }

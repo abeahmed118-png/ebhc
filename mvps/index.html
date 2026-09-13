@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="../assets/site.css?v=20260913b">
   <style>.page-hero { --hero-img: url('../assets/hero-poster.jpg'); }</style>
 </head>
 <body data-root="../">
@@ -46,7 +46,6 @@
       <div>
         <span class="label"><span data-slot="year">&nbsp;</span> <span data-slot="meta"></span></span>
         <h1>Finals MVPs</h1>
-        <p>The players who showed up when it mattered most.</p>
       </div>
       <div class="year-filter"><label for="yearSelect">Season</label><select id="yearSelect" aria-label="Choose a season"><option>All years</option></select></div>
     </div>
@@ -55,9 +54,7 @@
 
 <section id="mvps" style="padding-top:3rem">
   <div class="container">
-    <span class="label">Finals MVPs</span>
-    <h2 class="title">Big Game Players</h2>
-    <p class="sub">The player named most valuable in each championship final. Choose a season above or browse every year.</p>
+    <h2 class="title" style="margin-bottom:1.4rem">Finals MVPs</h2>
     <div data-slot="mvps"></div>
   </div>
 </section>
@@ -84,7 +81,7 @@
   </div>
 </footer>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=20260913b"></script>
 <script>EBHC.mvps();</script>
 </body>
 </html>

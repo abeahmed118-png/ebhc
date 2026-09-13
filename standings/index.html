@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="../assets/site.css?v=20260913b">
   <style>.page-hero { --hero-img: url('../assets/hero-poster.jpg'); }</style>
 </head>
 <body data-root="../">
@@ -46,7 +46,6 @@
       <div>
         <span class="label"><span data-slot="year">&nbsp;</span> <span data-slot="meta"></span></span>
         <h1>Standings &amp; Results</h1>
-        <p>Champions, the round-robin table and every score from the season you pick.</p>
       </div>
       <div class="year-filter"><label for="yearSelect">Season</label><select id="yearSelect" aria-label="Choose a season"><option>2026</option></select></div>
     </div>
@@ -55,9 +54,7 @@
 
 <section id="champions" class="dark" style="padding-top:3rem">
   <div class="container">
-    <span class="label">Champions</span>
-    <h2 class="title">Crowned on Sunday</h2>
-    <p class="sub" data-slot="format"></p>
+    <h2 class="title" style="margin-bottom:1.4rem">Champions</h2>
     <div data-slot="champions"></div>
   </div>
 </section>
@@ -65,8 +62,7 @@
 <section id="table">
   <div class="container">
     <span class="label">Standings</span>
-    <h2 class="title">Round Robin Table</h2>
-    <p class="sub">Playoff pools are marked beside each team. Full official table, tiebreakers and box scores are on HockeyShift.</p>
+    <h2 class="title" style="margin-bottom:1.4rem">Round Robin</h2>
     <div data-slot="standings"></div>
     <div class="links"><a class="btn btn-ghost" data-slot="official" href="#" target="_blank" rel="noopener" hidden>Official Standings on HockeyShift</a><a class="btn btn-ghost" href="../stats/">Player Stats &amp; Leaders</a></div>
   </div>
@@ -75,8 +71,7 @@
 <section id="scores" class="court" style="padding-top:0">
   <div class="container">
     <span class="label">Scores</span>
-    <h2 class="title">Every Game</h2>
-    <p class="sub">Tap a replay link to watch the full game on YouTube.</p>
+    <h2 class="title" style="margin-bottom:1.4rem">Results</h2>
     <div data-slot="scores"></div>
   </div>
 </section>
@@ -97,7 +92,7 @@
   </div>
 </footer>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=20260913b"></script>
 <script>EBHC.standings();</script>
 </body>
 </html>

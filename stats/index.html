@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="../assets/site.css?v=20260913b">
   <style>.page-hero { --hero-img: url('../assets/hero-poster.jpg'); }</style>
 </head>
 <body data-root="../">
@@ -46,7 +46,6 @@
       <div>
         <span class="label"><span data-slot="year">&nbsp;</span> <span data-slot="meta"></span></span>
         <h1>Stats &amp; Leaders</h1>
-        <p>Scoring leaders for each season, plus direct links to the official HockeyShift stat pages.</p>
       </div>
       <div class="year-filter"><label for="yearSelect">Season</label><select id="yearSelect" aria-label="Choose a season"><option>2026</option></select></div>
     </div>
@@ -55,18 +54,14 @@
 
 <section id="links" style="padding-top:3rem">
   <div class="container">
-    <span class="label">Official Stats</span>
-    <h2 class="title">Stats on HockeyShift</h2>
-    <p class="sub">EBHC stats are kept on the SOC Tournaments HockeyShift site. Pick a season above, then jump straight to the leaders, standings, scores, schedule, players and teams for that year.</p>
+    <h2 class="title" style="margin-bottom:1.4rem">Official Stats on HockeyShift</h2>
     <div data-slot="links"></div>
   </div>
 </section>
 
 <section id="leaders" class="dark">
   <div class="container">
-    <span class="label">Leaders</span>
-    <h2 class="title">Scoring Leaders</h2>
-    <p class="sub">Top point-getters for the selected season. Goalie stats, power play and playoff scoring are on HockeyShift.</p>
+    <h2 class="title" style="margin-bottom:1.4rem">Scoring Leaders</h2>
     <div data-slot="leaders"></div>
     <div class="links"><a class="btn btn-outline" href="../standings/">Standings &amp; Scores</a><a class="btn btn-outline" href="../mvps/">Finals MVPs</a></div>
   </div>
@@ -88,7 +83,7 @@
   </div>
 </footer>
 
-<script src="../assets/site.js"></script>
+<script src="../assets/site.js?v=20260913b"></script>
 <script>EBHC.stats();</script>
 </body>
 </html>
