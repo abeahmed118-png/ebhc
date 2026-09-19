@@ -190,8 +190,8 @@
   function wireNav() {
     var nav = document.querySelector('nav.top'), toggle = document.querySelector('.nav-toggle'), links = document.querySelector('.nav-links');
     if (toggle && links) {
-      toggle.addEventListener('click', function () { var open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); });
-      links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }); });
+      toggle.addEventListener('click', function () { var open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); document.documentElement.classList.toggle('menu-open', open); });
+      links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); document.documentElement.classList.remove('menu-open'); }); });
     }
     if (nav && !nav.classList.contains('always-solid')) {
       var upd = function () { nav.classList.toggle('solid', window.pageYOffset > 40); };

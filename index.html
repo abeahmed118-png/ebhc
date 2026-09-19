@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/photos/hero-2026.jpg" media="(min-width: 801px)">
-  <link rel="stylesheet" href="assets/site.css?v=20260919b">
+  <link rel="stylesheet" href="assets/site.css?v=20260919d">
 
   <script type="application/ld+json">
   {
@@ -259,10 +259,15 @@
     }
     @media (max-width: 760px) {
       .nav-toggle { display: flex; }
-      .nav-links { position: fixed; top: 66px; left: 0; right: 0; background: rgba(10,20,40,.98); flex-direction: column; align-items: stretch; padding: .8rem 1.25rem 1.2rem; gap: .2rem; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; border-bottom: 1px solid rgba(242,131,34,.25); }
+      .nav-links { position: fixed; top: 66px; left: 0; right: 0; height: calc(100vh - 66px); height: calc(100dvh - 66px); background: var(--navy-900); flex-direction: column; align-items: stretch; justify-content: flex-start; padding: 1rem 1.25rem calc(2rem + env(safe-area-inset-bottom)); gap: .2rem; overflow-y: auto; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; border-bottom: 0; }
       .nav-links.open { opacity: 1; transform: none; pointer-events: auto; }
-      .nav-links a { display: block; padding: .8rem .5rem; font-size: 1.1rem; }
-      .nav-links .nav-cta { margin: .5rem 0 0; text-align: center; }
+      .nav-links a { display: block; padding: .95rem .5rem; font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,.07); border-radius: 0; }
+      .nav-links .nav-cta { margin: 1rem 0 0; text-align: center; border-bottom: 0; border-radius: 8px; padding: .9rem; }
+      .nav-links .nav-social { border-left: 0; padding-left: 0; margin: 1rem 0 0; gap: .6rem; }
+      .nav-links .nav-social a { display: flex; align-items: center; justify-content: center; gap: .6rem; flex: 1; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; padding: .8rem; font-family: var(--head); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; font-size: 1.05rem; border-bottom: 1px solid rgba(255,255,255,.18); }
+      .nav-links .nav-social a svg { width: 20px; height: 20px; flex-shrink: 0; }
+      .nav-links .nav-social a span { display: inline; }
+      html.menu-open, html.menu-open body { overflow: hidden; }
       section { padding: 4.2rem 0; }
       .grid-3, .details-grid, .reg-layout, .venue-layout, .timeline { grid-template-columns: 1fr; }
       .hero { padding-top: 6rem; padding-bottom: 3.5rem; }
@@ -533,7 +538,7 @@
 
 <div class="mobile-cta"><a href="standings/" class="btn btn-primary">Standings &amp; Replays</a></div>
 
-<script src="assets/site.js?v=20260919b"></script>
+<script src="assets/site.js?v=20260919d"></script>
 <script>
 (function () {
   var nav = document.querySelector('nav.top');
