@@ -214,6 +214,9 @@ footer { background: #060d1c; color: rgba(255,255,255,.55); padding: 2.5rem 0; f
 .foot a { color: rgba(255,255,255,.8); text-decoration: underline; text-underline-offset: 3px; }
 .foot a:hover { color: var(--orange); }
 .foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.credit { flex-basis: 100%; margin-top: .6rem; font-size: .78rem; color: rgba(255,255,255,.35); }
+.credit a { color: rgba(255,255,255,.55); text-decoration: underline; text-underline-offset: 3px; }
+.credit a:hover { color: var(--orange); }
 
 @media (max-width: 860px) {
   .games { grid-template-columns: 1fr; }
