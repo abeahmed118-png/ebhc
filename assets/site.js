@@ -139,6 +139,35 @@
     return '<div class="card"><div class="wrap"><table class="champs" style="min-width:560px"><thead><tr><th class="l">Pool</th><th class="l">Champion</th><th class="l">Final</th><th class="l">Finals MVP</th><th>Replay</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>';
   }
 
+  function renderCarousel(season) {
+    var photos = (season && season.photos) || [];
+    if (!photos.length) return '';
+    var slides = photos.map(function (ph, i) {
+      return '<figure class="slide" data-i="' + i + '"><img src="' + ROOT + esc(ph.src) + '" alt="' + esc(ph.alt || '') + '" loading="' + (i ? 'lazy' : 'eager') + '"><figcaption>' + esc(ph.caption || '') + '</figcaption></figure>';
+    }).join('');
+    var dots = photos.map(function (_, i) { return '<button type="button" class="dot" data-i="' + i + '" aria-label="Photo ' + (i + 1) + '"' + (i ? '' : ' aria-current="true"') + '></button>'; }).join('');
+    return '<div class="carousel" data-count="' + photos.length + '"><div class="track" tabindex="0" aria-label="Champion photos">' + slides + '</div>' +
+      (photos.length > 1 ? '<button type="button" class="c-btn prev" aria-label="Previous photo">&#8249;</button><button type="button" class="c-btn next" aria-label="Next photo">&#8250;</button><div class="dots">' + dots + '</div>' : '') + '</div>' +
+      (season.album ? '<div class="album-link"><a class="btn btn-outline btn-sm" href="' + esc(season.album) + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-8 8"/></svg>Full ' + esc(season.year) + ' Photo Album</a></div>' : '');
+  }
+  function wireCarousels(scope) {
+    (scope || document).querySelectorAll('.carousel').forEach(function (c) {
+      if (c.__wired) return; c.__wired = true;
+      var track = c.querySelector('.track'), slides = c.querySelectorAll('.slide'), dots = c.querySelectorAll('.dot'), n = slides.length, cur = 0, timer;
+      function go(i, smooth) { cur = (i + n) % n; track.scrollTo({ left: slides[cur].offsetLeft - track.offsetLeft, behavior: smooth === false ? 'auto' : 'smooth' }); }
+      function sync() { var x = track.scrollLeft, best = 0, bd = 1e9; slides.forEach(function (sl, i) { var d = Math.abs(sl.offsetLeft - track.offsetLeft - x); if (d < bd) { bd = d; best = i; } }); cur = best; dots.forEach(function (d, i) { if (i === cur) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); }); }
+      var pb = c.querySelector('.prev'), nb = c.querySelector('.next');
+      if (pb) pb.addEventListener('click', function () { go(cur - 1); restart(); });
+      if (nb) nb.addEventListener('click', function () { go(cur + 1); restart(); });
+      dots.forEach(function (d) { d.addEventListener('click', function () { go(+d.getAttribute('data-i')); restart(); }); });
+      track.addEventListener('scroll', function () { clearTimeout(track.__t); track.__t = setTimeout(sync, 80); }, { passive: true });
+      track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { go(cur + 1); restart(); } if (e.key === 'ArrowLeft') { go(cur - 1); restart(); } });
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function restart() { clearInterval(timer); if (n > 1 && !reduce) timer = setInterval(function () { if (!c.matches(':hover')) go(cur + 1); }, 6000); }
+      restart();
+    });
+  }
+
   /* ---------- lite YouTube ---------- */
   function wireYouTube(scope) {
     (scope || document).querySelectorAll('.yt').forEach(function (box) {
@@ -179,7 +208,7 @@
       var y = yearFromUrl();
       if (!y || (y !== 'all' && !seasons.some(function (s) { return String(s.year) === y; }))) y = config.defaultAll ? 'all' : (seasons[0] ? String(seasons[0].year) : 'all');
       buildYearFilter(sel, seasons, y, config.allowAll);
-      function go(val) { var season = val === 'all' ? null : pick(seasons, val); config.render(seasons, season, val); setYearUrl(val); wireYouTube(); }
+      function go(val) { var season = val === 'all' ? null : pick(seasons, val); config.render(seasons, season, val); setYearUrl(val); wireYouTube(); wireCarousels(); }
       if (sel) sel.addEventListener('change', function () { go(sel.value); });
       go(y);
     }).catch(function (err) {
@@ -192,11 +221,11 @@
   function setText(name, text) { var el = slot(name); if (el) el.textContent = text; }
 
   window.EBHC = {
-    load: load, wireYouTube: wireYouTube,
-    standings: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); setText('format', s.format || ''); set('standings', renderStandings(s, false)); set('scores', renderScores(s)); set('champions', renderChampionsTable(s)); var a = slot('official'); if (a && s.links && s.links.standings) { a.href = s.links.standings; a.hidden = false; } else if (a) a.hidden = true; } }); },
+    load: load, wireYouTube: wireYouTube, wireCarousels: wireCarousels,
+    standings: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); setText('format', s.format || ''); set('standings', renderStandings(s, false)); set('scores', renderScores(s)); set('champions', renderChampionsTable(s)); set('gallery', renderCarousel(s)); var gw = slot('gallery-wrap'); if (gw) gw.hidden = !(s.photos && s.photos.length); var a = slot('official'); if (a && s.links && s.links.standings) { a.href = s.links.standings; a.hidden = false; } else if (a) a.hidden = true; } }); },
     mvps: function () { yearPage({ allowAll: true, defaultAll: true, render: function (seasons, s, val) { var list = val === 'all' ? seasons : [s]; setText('year', val === 'all' ? 'All years' : String(s.year)); set('mvps', renderMvps(list)); var w = slot('champions-wrap'); if (w) w.hidden = (val === 'all'); set('champions', val === 'all' ? '' : renderChampions(s, { moreLink: true })); } }); },
     stats: function () { yearPage({ allowAll: false, render: function (seasons, s) { setText('year', ''); setText('meta', (s.dates || s.year) + (s.venue ? ' • ' + s.venue : '')); set('links', renderStatLinks(s)); set('leaders', renderLeaders(s)); } }); },
-    home: function () { return load().then(function (data) { var s = data.seasons[0]; if (!s) return; setText('year', s.year); setText('format', s.format || ''); set('champions', renderChampions(s, { moreLink: true })); set('replays', renderFinalsReplays(s)); wireYouTube(); }).catch(function () { set('champions', '<div class="empty" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)">Results are on the <a href="standings/">Standings page</a>.</div>'); }); }
+    home: function () { return load().then(function (data) { var s = data.seasons[0]; if (!s) return; setText('year', s.year); setText('format', s.format || ''); set('champions', renderChampions(s, { moreLink: true })); set('replays', renderFinalsReplays(s)); set('gallery', renderCarousel(s)); var gw = slot('gallery-wrap'); if (gw) gw.hidden = !(s.photos && s.photos.length); wireYouTube(); wireCarousels(); }).catch(function () { set('champions', '<div class="empty" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)">Results are on the <a href="standings/">Standings page</a>.</div>'); }); }
   };
   wireNav();
 })();

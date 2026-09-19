@@ -1,5 +1,5 @@
 {
-  "_readme": "One entry per tournament year. Add a new object to `seasons` and every page (home, standings, mvps, stats) picks it up automatically. Newest year is shown by default.",
+  "_readme": "One entry per tournament year. Add a new object to `seasons` and every page (home, standings, mvps, stats) picks it up automatically. Newest year is shown by default. Add champion team photos under `photos` (src relative to site root, alt, caption); they feed the carousel on the homepage and the standings page. `album` is the public photo album link shown under the carousel.",
   "seasons": [
     {
       "year": 2026,
@@ -21,14 +21,134 @@
           "name": "Division C",
           "note": "Round robin, 3 games each",
           "standings": [
-            { "rk": 1, "team": "Wingmen HC", "gp": 3, "w": 3, "l": 0, "t": 0, "pts": 6, "pct": "1.000", "gf": 23, "ga": 8, "diff": "+15", "pim": 8, "streak": "W3", "pool": "Pool B" },
-            { "rk": 2, "team": "Lubicon Weasels", "gp": 3, "w": 3, "l": 0, "t": 0, "pts": 6, "pct": "1.000", "gf": 17, "ga": 4, "diff": "+13", "pim": 20, "streak": "W3", "pool": "Pool B" },
-            { "rk": 3, "team": "Dakkus", "gp": 3, "w": 2, "l": 1, "t": 0, "pts": 4, "pct": ".667", "gf": 20, "ga": 5, "diff": "+15", "pim": 8, "streak": "L1", "pool": "Pool B" },
-            { "rk": 4, "team": "JDP Eagles", "gp": 3, "w": 2, "l": 1, "t": 0, "pts": 4, "pct": ".667", "gf": 20, "ga": 7, "diff": "+13", "pim": 10, "streak": "L1", "pool": "Pool B" },
-            { "rk": 5, "team": "Jets", "gp": 3, "w": 1, "l": 2, "t": 0, "pts": 2, "pct": ".333", "gf": 7, "ga": 14, "diff": "-7", "pim": 26, "streak": "L1", "pool": "Pool C" },
-            { "rk": 6, "team": "Mad Dogs", "gp": 3, "w": 1, "l": 2, "t": 0, "pts": 2, "pct": ".333", "gf": 15, "ga": 25, "diff": "-10", "pim": 28, "streak": "W1", "pool": "Pool C" },
-            { "rk": 7, "team": "Snakearm", "gp": 3, "w": 0, "l": 3, "t": 0, "pts": 0, "pct": ".000", "gf": 10, "ga": 26, "diff": "-16", "pim": 12, "streak": "L3", "pool": "Pool C" },
-            { "rk": 8, "team": "Inline Group Inc", "gp": 3, "w": 0, "l": 3, "t": 0, "pts": 0, "pct": ".000", "gf": 2, "ga": 25, "diff": "-23", "pim": 6, "streak": "L3", "pool": "Pool C" }
+            {
+              "rk": 1,
+              "team": "Wingmen HC",
+              "gp": 3,
+              "w": 3,
+              "l": 0,
+              "t": 0,
+              "pts": 6,
+              "pct": "1.000",
+              "gf": 23,
+              "ga": 8,
+              "diff": "+15",
+              "pim": 8,
+              "streak": "W3",
+              "pool": "Pool B"
+            },
+            {
+              "rk": 2,
+              "team": "Lubicon Weasels",
+              "gp": 3,
+              "w": 3,
+              "l": 0,
+              "t": 0,
+              "pts": 6,
+              "pct": "1.000",
+              "gf": 17,
+              "ga": 4,
+              "diff": "+13",
+              "pim": 20,
+              "streak": "W3",
+              "pool": "Pool B"
+            },
+            {
+              "rk": 3,
+              "team": "Dakkus",
+              "gp": 3,
+              "w": 2,
+              "l": 1,
+              "t": 0,
+              "pts": 4,
+              "pct": ".667",
+              "gf": 20,
+              "ga": 5,
+              "diff": "+15",
+              "pim": 8,
+              "streak": "L1",
+              "pool": "Pool B"
+            },
+            {
+              "rk": 4,
+              "team": "JDP Eagles",
+              "gp": 3,
+              "w": 2,
+              "l": 1,
+              "t": 0,
+              "pts": 4,
+              "pct": ".667",
+              "gf": 20,
+              "ga": 7,
+              "diff": "+13",
+              "pim": 10,
+              "streak": "L1",
+              "pool": "Pool B"
+            },
+            {
+              "rk": 5,
+              "team": "Jets",
+              "gp": 3,
+              "w": 1,
+              "l": 2,
+              "t": 0,
+              "pts": 2,
+              "pct": ".333",
+              "gf": 7,
+              "ga": 14,
+              "diff": "-7",
+              "pim": 26,
+              "streak": "L1",
+              "pool": "Pool C"
+            },
+            {
+              "rk": 6,
+              "team": "Mad Dogs",
+              "gp": 3,
+              "w": 1,
+              "l": 2,
+              "t": 0,
+              "pts": 2,
+              "pct": ".333",
+              "gf": 15,
+              "ga": 25,
+              "diff": "-10",
+              "pim": 28,
+              "streak": "W1",
+              "pool": "Pool C"
+            },
+            {
+              "rk": 7,
+              "team": "Snakearm",
+              "gp": 3,
+              "w": 0,
+              "l": 3,
+              "t": 0,
+              "pts": 0,
+              "pct": ".000",
+              "gf": 10,
+              "ga": 26,
+              "diff": "-16",
+              "pim": 12,
+              "streak": "L3",
+              "pool": "Pool C"
+            },
+            {
+              "rk": 8,
+              "team": "Inline Group Inc",
+              "gp": 3,
+              "w": 0,
+              "l": 3,
+              "t": 0,
+              "pts": 0,
+              "pct": ".000",
+              "gf": 2,
+              "ga": 25,
+              "diff": "-23",
+              "pim": 6,
+              "streak": "L3",
+              "pool": "Pool C"
+            }
           ]
         }
       ],
@@ -39,7 +159,10 @@
           "runnerUp": "JDP Eagles",
           "finalScore": "4–3",
           "finalGame": 18,
-          "mvp": { "name": "Mohamed Dahrouge", "team": "Wingmen HC" },
+          "mvp": {
+            "name": "Mohamed Dahrouge",
+            "team": "Wingmen HC"
+          },
           "path": "3–0 in the round robin, then wins over Dakkus (5–1) and JDP Eagles (4–3)"
         },
         {
@@ -48,45 +171,353 @@
           "runnerUp": "Jets",
           "finalScore": "3–2",
           "finalGame": 17,
-          "mvp": { "name": "Dryden Ferchoff", "team": "Mad Dogs" },
+          "mvp": {
+            "name": "Dryden Ferchoff",
+            "team": "Mad Dogs"
+          },
           "path": "Semifinal win over Snakearm (7–5), then a one-goal final against the Jets"
         }
       ],
       "games": [
-        { "n": 1, "day": "Friday, August 7", "time": "7:30 PM", "rink": "Field House 1", "type": "RR", "away": "Snakearm", "as": 1, "home": "Wingmen HC", "hs": 8, "video": "UROAgHTE48c" },
-        { "n": 2, "day": "Friday, August 7", "time": "7:30 PM", "rink": "Field House 2", "type": "RR", "away": "Mad Dogs", "as": 2, "home": "JDP Eagles", "hs": 9 },
-        { "n": 3, "day": "Friday, August 7", "time": "8:30 PM", "rink": "Field House 1", "type": "RR", "away": "Inline Group Inc", "as": 0, "home": "Dakkus", "hs": 11, "video": "LWdkiN7Q5ns" },
-        { "n": 4, "day": "Friday, August 7", "time": "8:30 PM", "rink": "Field House 2", "type": "RR", "away": "Lubicon Weasels", "as": 6, "home": "Jets", "hs": 2 },
-        { "n": 5, "day": "Saturday, August 8", "time": "10:00 AM", "rink": "Field House 1", "type": "RR", "away": "Inline Group Inc", "as": 1, "home": "Jets", "hs": 5, "video": "fqUj1CqtXtw" },
-        { "n": 6, "day": "Saturday, August 8", "time": "11:00 AM", "rink": "Field House 1", "type": "RR", "away": "Wingmen HC", "as": 10, "home": "Mad Dogs", "hs": 5, "video": "pzME133ZpQE" },
-        { "n": 7, "day": "Saturday, August 8", "time": "12:00 PM", "rink": "Field House 1", "type": "RR", "away": "JDP Eagles", "as": 10, "home": "Snakearm", "hs": 3, "video": "Posowa9SweM" },
-        { "n": 8, "day": "Saturday, August 8", "time": "1:00 PM", "rink": "Field House 1", "type": "RR", "away": "Jets", "as": 0, "home": "Dakkus", "hs": 7, "video": "YXqTsFZd2_8" },
-        { "n": 9, "day": "Saturday, August 8", "time": "2:00 PM", "rink": "Field House 1", "type": "RR", "away": "Lubicon Weasels", "as": 9, "home": "Inline Group Inc", "hs": 1, "video": "z_6BOpRxKFM" },
-        { "n": 10, "day": "Saturday, August 8", "time": "3:00 PM", "rink": "Field House 1", "type": "RR", "away": "Dakkus", "as": 2, "home": "Wingmen HC", "hs": 5, "video": "RTUcDcGdTwo" },
-        { "n": 11, "day": "Saturday, August 8", "time": "4:00 PM", "rink": "Field House 1", "type": "RR", "away": "Snakearm", "as": 6, "home": "Mad Dogs", "hs": 8, "video": "E-WvOJXVnvM" },
-        { "n": 12, "day": "Saturday, August 8", "time": "5:00 PM", "rink": "Field House 1", "type": "RR", "away": "Lubicon Weasels", "as": 2, "home": "JDP Eagles", "hs": 1, "video": "ZjYk12yJ--Q" },
-        { "n": 13, "day": "Sunday, August 9", "time": "10:00 AM", "rink": "Field House 1", "type": "PO", "round": "Pool C Semifinal", "away": "Inline Group Inc", "as": 0, "home": "Jets", "hs": 6, "video": "CnHXqT4yJ2s" },
-        { "n": 14, "day": "Sunday, August 9", "time": "11:15 AM", "rink": "Field House 1", "type": "PO", "round": "Pool C Semifinal", "away": "Snakearm", "as": 5, "home": "Mad Dogs", "hs": 7, "video": "cI6eeCwkTfU" },
-        { "n": 15, "day": "Sunday, August 9", "time": "12:30 PM", "rink": "Field House 1", "type": "PO", "round": "Pool B Semifinal", "away": "Dakkus", "as": 1, "home": "Wingmen HC", "hs": 5, "video": "l_Ezl8_lXHc" },
-        { "n": 16, "day": "Sunday, August 9", "time": "1:45 PM", "rink": "Field House 1", "type": "PO", "round": "Pool B Semifinal", "away": "JDP Eagles", "as": 3, "home": "Lubicon Weasels", "hs": 0, "video": "TMVJejFrBl4" },
-        { "n": 17, "day": "Sunday, August 9", "time": "3:15 PM", "rink": "Field House 1", "type": "PO", "round": "Pool C Final", "away": "Mad Dogs", "as": 3, "home": "Jets", "hs": 2, "video": "97iQNqjfG0o" },
-        { "n": 18, "day": "Sunday, August 9", "time": "4:30 PM", "rink": "Field House 1", "type": "PO", "round": "Pool B Final", "away": "JDP Eagles", "as": 3, "home": "Wingmen HC", "hs": 4, "video": "7inGUowyP5Q" }
+        {
+          "n": 1,
+          "day": "Friday, August 7",
+          "time": "7:30 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Snakearm",
+          "as": 1,
+          "home": "Wingmen HC",
+          "hs": 8,
+          "video": "UROAgHTE48c"
+        },
+        {
+          "n": 2,
+          "day": "Friday, August 7",
+          "time": "7:30 PM",
+          "rink": "Field House 2",
+          "type": "RR",
+          "away": "Mad Dogs",
+          "as": 2,
+          "home": "JDP Eagles",
+          "hs": 9
+        },
+        {
+          "n": 3,
+          "day": "Friday, August 7",
+          "time": "8:30 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Inline Group Inc",
+          "as": 0,
+          "home": "Dakkus",
+          "hs": 11,
+          "video": "LWdkiN7Q5ns"
+        },
+        {
+          "n": 4,
+          "day": "Friday, August 7",
+          "time": "8:30 PM",
+          "rink": "Field House 2",
+          "type": "RR",
+          "away": "Lubicon Weasels",
+          "as": 6,
+          "home": "Jets",
+          "hs": 2
+        },
+        {
+          "n": 5,
+          "day": "Saturday, August 8",
+          "time": "10:00 AM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Inline Group Inc",
+          "as": 1,
+          "home": "Jets",
+          "hs": 5,
+          "video": "fqUj1CqtXtw"
+        },
+        {
+          "n": 6,
+          "day": "Saturday, August 8",
+          "time": "11:00 AM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Wingmen HC",
+          "as": 10,
+          "home": "Mad Dogs",
+          "hs": 5,
+          "video": "pzME133ZpQE"
+        },
+        {
+          "n": 7,
+          "day": "Saturday, August 8",
+          "time": "12:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "JDP Eagles",
+          "as": 10,
+          "home": "Snakearm",
+          "hs": 3,
+          "video": "Posowa9SweM"
+        },
+        {
+          "n": 8,
+          "day": "Saturday, August 8",
+          "time": "1:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Jets",
+          "as": 0,
+          "home": "Dakkus",
+          "hs": 7,
+          "video": "YXqTsFZd2_8"
+        },
+        {
+          "n": 9,
+          "day": "Saturday, August 8",
+          "time": "2:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Lubicon Weasels",
+          "as": 9,
+          "home": "Inline Group Inc",
+          "hs": 1,
+          "video": "z_6BOpRxKFM"
+        },
+        {
+          "n": 10,
+          "day": "Saturday, August 8",
+          "time": "3:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Dakkus",
+          "as": 2,
+          "home": "Wingmen HC",
+          "hs": 5,
+          "video": "RTUcDcGdTwo"
+        },
+        {
+          "n": 11,
+          "day": "Saturday, August 8",
+          "time": "4:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Snakearm",
+          "as": 6,
+          "home": "Mad Dogs",
+          "hs": 8,
+          "video": "E-WvOJXVnvM"
+        },
+        {
+          "n": 12,
+          "day": "Saturday, August 8",
+          "time": "5:00 PM",
+          "rink": "Field House 1",
+          "type": "RR",
+          "away": "Lubicon Weasels",
+          "as": 2,
+          "home": "JDP Eagles",
+          "hs": 1,
+          "video": "ZjYk12yJ--Q"
+        },
+        {
+          "n": 13,
+          "day": "Sunday, August 9",
+          "time": "10:00 AM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool C Semifinal",
+          "away": "Inline Group Inc",
+          "as": 0,
+          "home": "Jets",
+          "hs": 6,
+          "video": "CnHXqT4yJ2s"
+        },
+        {
+          "n": 14,
+          "day": "Sunday, August 9",
+          "time": "11:15 AM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool C Semifinal",
+          "away": "Snakearm",
+          "as": 5,
+          "home": "Mad Dogs",
+          "hs": 7,
+          "video": "cI6eeCwkTfU"
+        },
+        {
+          "n": 15,
+          "day": "Sunday, August 9",
+          "time": "12:30 PM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool B Semifinal",
+          "away": "Dakkus",
+          "as": 1,
+          "home": "Wingmen HC",
+          "hs": 5,
+          "video": "l_Ezl8_lXHc"
+        },
+        {
+          "n": 16,
+          "day": "Sunday, August 9",
+          "time": "1:45 PM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool B Semifinal",
+          "away": "JDP Eagles",
+          "as": 3,
+          "home": "Lubicon Weasels",
+          "hs": 0,
+          "video": "TMVJejFrBl4"
+        },
+        {
+          "n": 17,
+          "day": "Sunday, August 9",
+          "time": "3:15 PM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool C Final",
+          "away": "Mad Dogs",
+          "as": 3,
+          "home": "Jets",
+          "hs": 2,
+          "video": "97iQNqjfG0o"
+        },
+        {
+          "n": 18,
+          "day": "Sunday, August 9",
+          "time": "4:30 PM",
+          "rink": "Field House 1",
+          "type": "PO",
+          "round": "Pool B Final",
+          "away": "JDP Eagles",
+          "as": 3,
+          "home": "Wingmen HC",
+          "hs": 4,
+          "video": "7inGUowyP5Q"
+        }
       ],
       "leaders": {
         "note": "Round robin only. Playoff scoring and goalie stats are on HockeyShift.",
         "rows": [
-          { "rk": 1, "name": "Darryl Nanooch", "num": "29", "team": "JDP Eagles", "gp": 3, "g": 7, "a": 4, "pts": 11 },
-          { "rk": 2, "name": "Dryden Ferchoff", "num": "55", "team": "Mad Dogs", "gp": 2, "g": 6, "a": 4, "pts": 10 },
-          { "rk": 3, "name": "Kyle Auger", "num": "34", "team": "Lubicon Weasels", "gp": 3, "g": 4, "a": 6, "pts": 10 },
-          { "rk": 4, "name": "Malachi Kanee", "num": "08", "team": "Lubicon Weasels", "gp": 3, "g": 2, "a": 8, "pts": 10 },
-          { "rk": 5, "name": "Zigmond Dor", "num": "8", "team": "JDP Eagles", "gp": 3, "g": 4, "a": 6, "pts": 10 },
-          { "rk": 6, "name": "Rajdeep Chung", "num": "98", "team": "Dakkus", "gp": 3, "g": 5, "a": 4, "pts": 9 },
-          { "rk": 7, "name": "Jonathan Mcallister", "num": "88", "team": "Mad Dogs", "gp": 3, "g": 3, "a": 5, "pts": 8 },
-          { "rk": 8, "name": "Omar Elsafadi", "num": "87", "team": "Wingmen HC", "gp": 3, "g": 4, "a": 4, "pts": 8 },
-          { "rk": 9, "name": "Danny Mclean", "num": "7", "team": "JDP Eagles", "gp": 3, "g": 2, "a": 5, "pts": 7 },
-          { "rk": 10, "name": "Khalil Hajar", "num": "93", "team": "Wingmen HC", "gp": 2, "g": 4, "a": 3, "pts": 7 }
+          {
+            "rk": 1,
+            "name": "Darryl Nanooch",
+            "num": "29",
+            "team": "JDP Eagles",
+            "gp": 3,
+            "g": 7,
+            "a": 4,
+            "pts": 11
+          },
+          {
+            "rk": 2,
+            "name": "Dryden Ferchoff",
+            "num": "55",
+            "team": "Mad Dogs",
+            "gp": 2,
+            "g": 6,
+            "a": 4,
+            "pts": 10
+          },
+          {
+            "rk": 3,
+            "name": "Kyle Auger",
+            "num": "34",
+            "team": "Lubicon Weasels",
+            "gp": 3,
+            "g": 4,
+            "a": 6,
+            "pts": 10
+          },
+          {
+            "rk": 4,
+            "name": "Malachi Kanee",
+            "num": "08",
+            "team": "Lubicon Weasels",
+            "gp": 3,
+            "g": 2,
+            "a": 8,
+            "pts": 10
+          },
+          {
+            "rk": 5,
+            "name": "Zigmond Dor",
+            "num": "8",
+            "team": "JDP Eagles",
+            "gp": 3,
+            "g": 4,
+            "a": 6,
+            "pts": 10
+          },
+          {
+            "rk": 6,
+            "name": "Rajdeep Chung",
+            "num": "98",
+            "team": "Dakkus",
+            "gp": 3,
+            "g": 5,
+            "a": 4,
+            "pts": 9
+          },
+          {
+            "rk": 7,
+            "name": "Jonathan Mcallister",
+            "num": "88",
+            "team": "Mad Dogs",
+            "gp": 3,
+            "g": 3,
+            "a": 5,
+            "pts": 8
+          },
+          {
+            "rk": 8,
+            "name": "Omar Elsafadi",
+            "num": "87",
+            "team": "Wingmen HC",
+            "gp": 3,
+            "g": 4,
+            "a": 4,
+            "pts": 8
+          },
+          {
+            "rk": 9,
+            "name": "Danny Mclean",
+            "num": "7",
+            "team": "JDP Eagles",
+            "gp": 3,
+            "g": 2,
+            "a": 5,
+            "pts": 7
+          },
+          {
+            "rk": 10,
+            "name": "Khalil Hajar",
+            "num": "93",
+            "team": "Wingmen HC",
+            "gp": 2,
+            "g": 4,
+            "a": 3,
+            "pts": 7
+          }
         ]
-      }
+      },
+      "photos": [
+        {
+          "src": "assets/photos/2026-wingmen-champions.jpg",
+          "alt": "Wingmen HC with medals, champions caps and the EBHC trophy",
+          "caption": "Pool B Champions • Wingmen HC"
+        },
+        {
+          "src": "assets/photos/2026-maddogs-champions.jpg",
+          "alt": "Mad Dogs with medals, champions caps and the EBHC trophy",
+          "caption": "Pool C Champions • Mad Dogs"
+        }
+      ],
+      "album": "https://photos.google.com/share/AF1QipPyMb3X6HH2VH4loIyale4eNgUz24xTLbSLLwuN_JKczE7_UGQwuGp11-fYpDhv3w?key=UWphRWdhWmtDQlRnVjdMQ3RheVRtQ2FVbDY3bjJ3"
     }
   ]
 }

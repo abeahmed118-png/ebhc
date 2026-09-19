@@ -26,8 +26,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/hero-poster.jpg">
-  <link rel="stylesheet" href="assets/site.css?v=20260913c">
+  <link rel="preload" as="image" href="assets/photos/hero-2026.jpg" media="(min-width: 801px)">
+  <link rel="stylesheet" href="assets/site.css?v=20260918b">
 
   <script type="application/ld+json">
   {
@@ -129,19 +129,20 @@
     .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* HERO */
-    .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; background: var(--navy-900); color: var(--white); text-align: center; padding: 7rem 0 5rem; isolation: isolate; }
+    .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; background: var(--navy-900); color: var(--white); text-align: center; padding: 7rem 0 6.5rem; isolation: isolate; }
     .hero-media { position: absolute; inset: -12% 0; z-index: -3; will-change: transform; }
-    .hero-media video, .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
-    .hero-media img { position: absolute; inset: 0; }
+    .hero-media picture, .hero-media img { width: 100%; height: 100%; }
+    .hero-media img { object-fit: cover; object-position: center 40%; animation: kb 28s ease-in-out infinite alternate; transform-origin: center; }
+    @keyframes kb { from { transform: scale(1); } to { transform: scale(1.08); } }
     .hero-shade { position: absolute; inset: 0; z-index: -2; background:
-      radial-gradient(ellipse 70% 60% at 50% 45%, rgba(10,20,40,.25), rgba(10,20,40,.78) 70%),
-      linear-gradient(180deg, rgba(10,20,40,.72) 0%, rgba(10,20,40,.35) 40%, rgba(10,20,40,.95) 100%); }
+      radial-gradient(ellipse 70% 60% at 50% 45%, rgba(10,20,40,.12), rgba(10,20,40,.55) 75%),
+      linear-gradient(180deg, rgba(10,20,40,.6) 0%, rgba(10,20,40,.2) 45%, rgba(10,20,40,.94) 100%); }
     .hero-content { position: relative; max-width: 900px; padding: 0 1.25rem; }
     .hero-logo { width: 190px; height: auto; margin: 0 auto 1.25rem; filter: drop-shadow(0 18px 30px rgba(0,0,0,.55)); }
     .hero-badge { display: inline-flex; align-items: center; gap: .6rem; background: rgba(242,131,34,.14); border: 1px solid rgba(242,131,34,.5); color: #ffc48a; font-family: var(--head); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: .95rem; padding: .45rem 1rem; border-radius: 999px; margin-bottom: 1.4rem; }
-    .hero h1 { font-size: clamp(3rem, 8.5vw, 6.6rem); font-weight: 800; line-height: .92; text-shadow: 0 10px 40px rgba(0,0,0,.5); }
+    .hero h1 { font-size: clamp(3rem, 8.5vw, 6.6rem); font-weight: 800; line-height: .92; text-shadow: 0 10px 40px rgba(0,0,0,.7), 0 2px 8px rgba(0,0,0,.6); }
     .hero h1 .highlight { color: var(--orange); }
-    .hero-sub { margin: 1.4rem auto 0; max-width: 640px; font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--silver-light); font-weight: 500; }
+    .hero-sub { margin: 1.4rem auto 0; max-width: 640px; font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--silver-light); font-weight: 500; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
     .hero-actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; margin-top: 2.2rem; }
     .hero-note { margin-top: 1.4rem; font-size: .85rem; color: rgba(255,255,255,.55); }
     .hero-note a { color: #ffc48a; text-decoration: underline; text-underline-offset: 3px; }
@@ -265,6 +266,7 @@
       section { padding: 4.2rem 0; }
       .grid-3, .details-grid, .reg-layout, .venue-layout, .timeline { grid-template-columns: 1fr; }
       .hero { padding-top: 6rem; padding-bottom: 3.5rem; }
+      .hero-media img { object-position: 50% 50%; }
       .scroll-cue { display: none; }
       .hero-logo { width: 140px; }
       .champ { padding: 1.6rem; }
@@ -276,7 +278,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .rv { opacity: 1; transform: none; transition: none; }
-      .scroll-cue i, .nav-live-dot { animation: none; }
+      .scroll-cue i, .nav-live-dot, .hero-media img { animation: none; }
       .btn, .card { transition: none; }
     }
   </style>
@@ -292,6 +294,7 @@
       <li><a href="mvps/">Finals MVPs</a></li>
       <li><a href="stats/">Stats</a></li>
       <li><a href="#replays">Replays</a></li>
+      <li><a href="https://photos.google.com/share/AF1QipPyMb3X6HH2VH4loIyale4eNgUz24xTLbSLLwuN_JKczE7_UGQwuGp11-fYpDhv3w?key=UWphRWdhWmtDQlRnVjdMQ3RheVRtQ2FVbDY3bjJ3" target="_blank" rel="noopener">Photos</a></li>
       <li><a href="#experience">The Tournament</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="live/" class="nav-live"><span class="nav-live-dot"></span>Live</a></li>
@@ -303,8 +306,10 @@
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="hero-media" data-depth="0.35">
-    <img src="assets/hero-poster.jpg" alt="" aria-hidden="true" fetchpriority="high">
-    <video id="heroVideo" muted loop playsinline autoplay preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true"></video>
+    <picture>
+      <source media="(max-width: 800px)" srcset="assets/photos/hero-2026-m.jpg">
+      <img src="assets/photos/hero-2026.jpg" alt="A row of EBHC 2026 champions caps lined up on the boards" fetchpriority="high" width="1920" height="1080">
+    </picture>
   </div>
   <div class="hero-shade"></div>
   <div class="hero-content">
@@ -328,6 +333,7 @@
     <span class="section-label rv"><span data-slot="year">Latest</span> Championship</span>
     <h2 class="section-title rv" style="margin-bottom:1.6rem">Champions Crowned</h2>
         <div class="rv" data-slot="champions"></div>
+    <div class="rv" data-slot="gallery-wrap" style="margin-top:1.5rem" hidden><div data-slot="gallery"></div></div>
     <div class="stats-links rv">
       <a class="btn btn-primary" href="standings/">Standings &amp; Scores</a>
       <a class="btn btn-outline" href="mvps/">Finals MVPs</a>
@@ -495,6 +501,7 @@
     <a href="mailto:ebhc@shinnyofchampions.com" class="contact-email rv">ebhc@shinnyofchampions.com</a>
     <div class="social-row rv">
       <a href="https://www.instagram.com/ebhctournament/" target="_blank" rel="noopener">Instagram @ebhctournament</a>
+      <a href="https://photos.google.com/share/AF1QipPyMb3X6HH2VH4loIyale4eNgUz24xTLbSLLwuN_JKczE7_UGQwuGp11-fYpDhv3w?key=UWphRWdhWmtDQlRnVjdMQ3RheVRtQ2FVbDY3bjJ3" target="_blank" rel="noopener">Photo Album</a>
       <a href="https://www.facebook.com/ebhctournament" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">YouTube</a>
     </div>
@@ -510,6 +517,7 @@
       <a href="mvps/">Finals MVPs</a>
       <a href="stats/">Stats</a>
       <a href="live/">Live Stream</a>
+      <a href="https://photos.google.com/share/AF1QipPyMb3X6HH2VH4loIyale4eNgUz24xTLbSLLwuN_JKczE7_UGQwuGp11-fYpDhv3w?key=UWphRWdhWmtDQlRnVjdMQ3RheVRtQ2FVbDY3bjJ3" target="_blank" rel="noopener">Photos</a>
       <a href="https://www.instagram.com/ebhctournament/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/ebhctournament" target="_blank" rel="noopener">Facebook</a>
       <a href="https://www.youtube.com/@ebhctournament" target="_blank" rel="noopener">YouTube</a>
@@ -519,24 +527,11 @@
 
 <div class="mobile-cta"><a href="standings/" class="btn btn-primary">Standings &amp; Replays</a></div>
 
-<script src="assets/site.js?v=20260913c"></script>
+<script src="assets/site.js?v=20260918b"></script>
 <script>
 (function () {
   var nav = document.querySelector('nav.top');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Hero video: pick size, respect reduced motion
-  var v = document.getElementById('heroVideo');
-  if (v) {
-    if (reduce) { v.removeAttribute('autoplay'); v.remove(); }
-    else {
-      var small = window.innerWidth < 800 || (navigator.connection && /2g|3g/.test(navigator.connection.effectiveType || ''));
-      v.src = small ? 'assets/hero-720.mp4' : 'assets/hero-1080.mp4';
-      v.addEventListener('canplay', function () { v.style.opacity = 1; });
-      v.style.opacity = 0; v.style.transition = 'opacity .6s ease';
-      var p = v.play(); if (p && p.catch) p.catch(function(){});
-    }
-  }
 
   // Reveal on scroll
   var rv = document.querySelectorAll('.rv');
