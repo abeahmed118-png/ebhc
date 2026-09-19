@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   var ROOT = (document.body.getAttribute('data-root') || '');
+  var DATA_VERSION = document.body.getAttribute('data-version') || String(Date.now()).slice(0, 8);
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
   var TROPHY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>';
@@ -10,7 +11,7 @@
   var cache = null;
   function load() {
     if (cache) return cache;
-    cache = fetch(ROOT + 'data/seasons.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('data ' + r.status); return r.json(); }).then(function (j) {
+    cache = fetch(ROOT + 'data/seasons.json?v=' + DATA_VERSION, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('data ' + r.status); return r.json(); }).then(function (j) {
       j.seasons = (j.seasons || []).slice().sort(function (a, b) { return b.year - a.year; });
       return j;
     });
